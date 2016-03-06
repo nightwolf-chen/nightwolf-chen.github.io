@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Effective Objective-C(2) | Jidong&#39;s Time</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="###对象，消息，以及运行时（Runtime）这一篇，介绍oc于对象，消息和Runtime有关的实践。
+####理解Properties类似于java里面的set和get方法，oc提供了property特性。在java（这里以java作为典型的面向对象举例子）里面，一般是定义一个成员变量，然后再定义对应的setter和getter。在oc里面你可以这样定义一个属性:
+1234567//In int">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Effective Objective-C(2)">
+<meta property="og:url" content="http://blog.nirvawolf.com/2014-09-16-effective-objective-c-2.html">
+<meta property="og:site_name" content="Jidong's Time">
+<meta property="og:description" content="###对象，消息，以及运行时（Runtime）这一篇，介绍oc于对象，消息和Runtime有关的实践。
+####理解Properties类似于java里面的set和get方法，oc提供了property特性。在java（这里以java作为典型的面向对象举例子）里面，一般是定义一个成员变量，然后再定义对应的setter和getter。在oc里面你可以这样定义一个属性:
+1234567//In int">
+<meta property="og:updated_time" content="2016-03-06T05:11:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Effective Objective-C(2)">
+<meta name="twitter:description" content="###对象，消息，以及运行时（Runtime）这一篇，介绍oc于对象，消息和Runtime有关的实践。
+####理解Properties类似于java里面的set和get方法，oc提供了property特性。在java（这里以java作为典型的面向对象举例子）里面，一般是定义一个成员变量，然后再定义对应的setter和getter。在oc里面你可以这样定义一个属性:
+1234567//In int">
+  
+    <link rel="alternate" href="/atom.xml" title="Jidong&#39;s Time" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jidong&#39;s Time</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A Jidong Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.nirvawolf.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-undefined" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014-09-16-effective-objective-c-2.html" class="article-date">
+  <time datetime="2014-09-16T15:04:16.000Z" itemprop="datePublished">2014-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Effective Objective-C(2)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###对象，消息，以及运行时（Runtime）<br>这一篇，介绍oc于对象，消息和Runtime有关的实践。</p>
+<p>####理解Properties<br>类似于java里面的set和get方法，oc提供了property特性。在java（这里以java作为典型的面向对象举例子）里面，一般是定义一个成员变量，然后再定义对应的setter和getter。在oc里面你可以这样定义一个属性:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//In interface file</span><br><span class="line">@property(retain,nonatomic) NSString *aProperty;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">//In implement file,optional</span><br><span class="line">@synthesize aProperty = _aProperty</span><br></pre></td></tr></table></figure>
+<p>在现代的oc编译器里面，当你定义了一个property，编译器会自动生成getter和setter还有对应的变量。也就是@synthesize是可选的，你可以通过@synthesize来指定变量的名字，默认生成的变量名字是在property名字前面加一个下划线。</p>
+<p>###使用_var 还是 self.var<br>这里我想讨论一下一个有趣的问题。property对应一个成员变量，在类的内部既可以通过直接访问变量的方式（_var）,也可以通过getter和setter的方式去访问该变量(self.var)。那到底哪种方式是比较好的呢？</p>
+<p>一些人认为getter和setter方式效率会比较慢，因为是通过消息的形式进行访问的。这的确是有道理的，但是这细微到几乎难以察觉的差别在绝大多数情况下都是没有什么影响的（除非是超高频率的进行访问）。</p>
+<p>无论怎么说，具体怎么写还是要按情况而定的。但是有一种比较折中的做法，也是Effective-oc里面提倡的做法。读操作采用_var的形式，写操作使用setter，setter可以出发KVO。这也算是一种折中的做法啦。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.nirvawolf.com/2014-09-16-effective-objective-c-2.html" data-id="cilg4f9aj0006j08kbfz7g1uz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Jidong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

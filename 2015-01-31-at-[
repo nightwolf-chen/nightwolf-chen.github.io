@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>一个横向UITableView实现 | Jidong&#39;s Time</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#UITableViewUITableView是UIKit里面常用的类，几乎所有的ios app都离不开这个组件。它提供了一种连续滚动，分段显示view的ui体验，使得有限屏幕大小有着更丰富的ui体验。
+##UITableView 一些设计理念UITableView里面使用到了delegate模式和模板模式（datasource），datasource里面定义一组接口规范UITableView数据">
+<meta property="og:type" content="website">
+<meta property="og:title" content="一个横向UITableView实现">
+<meta property="og:url" content="http://blog.nirvawolf.com/2015-01-31-at-[">
+<meta property="og:site_name" content="Jidong's Time">
+<meta property="og:description" content="#UITableViewUITableView是UIKit里面常用的类，几乎所有的ios app都离不开这个组件。它提供了一种连续滚动，分段显示view的ui体验，使得有限屏幕大小有着更丰富的ui体验。
+##UITableView 一些设计理念UITableView里面使用到了delegate模式和模板模式（datasource），datasource里面定义一组接口规范UITableView数据">
+<meta property="og:updated_time" content="2016-03-06T05:11:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个横向UITableView实现">
+<meta name="twitter:description" content="#UITableViewUITableView是UIKit里面常用的类，几乎所有的ios app都离不开这个组件。它提供了一种连续滚动，分段显示view的ui体验，使得有限屏幕大小有着更丰富的ui体验。
+##UITableView 一些设计理念UITableView里面使用到了delegate模式和模板模式（datasource），datasource里面定义一组接口规范UITableView数据">
+  
+    <link rel="alternate" href="/atom.xml" title="Jidong&#39;s Time" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jidong&#39;s Time</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">We always share</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.nirvawolf.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-undefined" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015-01-31-at-[?]-ge-heng-xiang-uitableviewshi-xian.html" class="article-date">
+  <time datetime="2015-01-31T13:27:03.000Z" itemprop="datePublished">2015-01-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一个横向UITableView实现
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#UITableView<br>UITableView是UIKit里面常用的类，几乎所有的ios app都离不开这个组件。它提供了一种连续滚动，分段显示view的ui体验，使得有限屏幕大小有着更丰富的ui体验。</p>
+<p>##UITableView 一些设计理念<br>UITableView里面使用到了delegate模式和模板模式（datasource），datasource里面定义一组接口规范UITableView数据来源，比如说：cellForRowAtIndexPath<br>numberOfRowsInSection,UITableView的两个关键方法。简而言之，你只要按照要求提供cell的数量和提供cell的样式，接下来所有事情UITableView就会帮你做。</p>
+<p>##UITableView做了什么</p>
+<p>###cell的布局<br>那么UITableView为我们做了什么呢？UITableView是UIScrollView的子类，这给了UITableView可以滚动的天然特性，从外表看起来UITableView主要是实现了对cell的布局和展示。UITableView自动的按照顺序将所有的cell进行布局放到scroll上面。更深入进去，我们可以发现UITableView在cell的使用上面进行了优化，其中一点就是对cell的复用。</p>
+<p>###cell的复用及原理<br>cell的复用采用了享元模式，当cell的数量多的时候每次都重新初始化cell是很浪费资源的。因为任何时候可见的cell数量是有限的，cell应该被复用。UITableView有一个方法<br>dequeueReusableCellWithIdentifier，用来获取可复用的cell，UITableView的复用标准写法如下：</p>
+<figure class="highlight plain"><figcaption><span>UITableView的经典写法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];</span><br><span class="line"></span><br><span class="line">if (nil == cell) &#123;</span><br><span class="line">    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault</span><br><span class="line">                                   reuseIdentifier:CellIdentifier];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Do something to cell</span><br><span class="line"></span><br><span class="line">return cell;</span><br></pre></td></tr></table></figure>
+<p>UITableView 维护一个cell pool，当cell不可见的时候cell会被回收到这个pool里面。需要输出cell之前先尝试从这个pool里面获取可复用的cell，这样便可达到复用的目的。</p>
+<p>##自己实现一个水平滚动的TableView<br>我们平时多用的是垂直滚动的tableview，有时候我们也需要水平滚动的tableview，反正我最近是遇到了这种需求。实现水平滚动有很多方法，UICollectionView，UIScrollView，还有一种将UITableView进行旋转的方法可以 <a href="http://stackoverflow.com/questions/2778521/iphone-tableview-use-cells-in-horizontal-scrolling-not-vertical" target="_blank" rel="external">参考这里</a>。</p>
+<p>既然前面我们已经大致了解了tableview的原理，这里我们自己尝试实现一个水平滚动的tableview。简单起见，我们这里只是实现主要的布局和cell复用功能，忽略section和其它一些细节。</p>
+<p>###基本思路<br>首先tableview继承于UIScrollView，tableview在加载数据的时候需要进行以下几个操作：</p>
+<blockquote>
+<ol>
+<li>根据index计算出每一个cell在scroll上的位置，因为我们实现的tableview是水平滚动<br>的，所以我们需要delegate提供cell的宽度，否则则使用默认的宽度</li>
+<li>根据当前scroll的offset，也就是当前滚动的位置来显示cell。</li>
+<li>将不可见的cell回收以便复用。<br> （2，3步是循环进行的）</li>
+</ol>
+</blockquote>
+<p>有了这个思路以后，我们可以简单的写出tableview 的reloadData方法</p>
+<figure class="highlight plain"><figcaption><span>reloadData 的实现</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (void) reloadData</span><br><span class="line">&#123;</span><br><span class="line">    [self returnNonVisibleColumsToThePool:nil];</span><br><span class="line">    [self generateWidthAndOffsetData];</span><br><span class="line">    [self layoutTableColums];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>####计算cell的位置<br>因为cell的宽度（通过delegate获取或者使用默认）和高度（和tableview的高度一致），我们可以通过简单的数学计算将每一个cell的位置都计算出来，这个操作在reloadData的时候进行：</p>
+<figure class="highlight plain"><figcaption><span>计算cell的位置数据</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (void) generateWidthAndOffsetData</span><br><span class="line">&#123;</span><br><span class="line">    CGFloat currentOffsetX = 0.0;</span><br><span class="line">    </span><br><span class="line">    BOOL checkWidthForEachColum = [[self delegate] respondsToSelector: @selector(ps_tableViewWidthForColum:colum:)];</span><br><span class="line">    </span><br><span class="line">    NSMutableArray* newColumModels = [NSMutableArray array];</span><br><span class="line">    </span><br><span class="line">    NSInteger numberOfColums = [[self dataSource] numberOfColums:self];</span><br><span class="line">    </span><br><span class="line">    for (NSInteger colum = 0; colum &lt; numberOfColums; colum++)</span><br><span class="line">    &#123;</span><br><span class="line">        PSHorizontalTableCellModel* columModel = [[PSHorizontalTableCellModel alloc] init];</span><br><span class="line">        </span><br><span class="line">        CGFloat columWidth = checkWidthForEachColum ? [[self delegate] ps_tableViewWidthForColum:self colum:colum] : [self columWidth];</span><br><span class="line">        </span><br><span class="line">        columModel.width = columWidth + kColumMargin;</span><br><span class="line">        columModel.startX = currentOffsetX + kColumMargin;</span><br><span class="line">        </span><br><span class="line">        [newColumModels addObject:columModel];</span><br><span class="line">        </span><br><span class="line">        currentOffsetX += (columWidth + kColumMargin);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    self.columModels = newColumModels;</span><br><span class="line">    </span><br><span class="line">    [self setContentSize: CGSizeMake(currentOffsetX, self.bounds.size.height)];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们将计算好的cell数据存放到一个数组里面，他们的下标和index一一对应。</p>
+<p>####显示cell<br>cell的位置数据都计算好以后，就是cell的显示了。这部分应该是tableview的核心功能。简单的来将，就是根据UIScrollView当前的offset来决定要显示哪些cell，因为scrollview的offset变化的频率是很高的，所以我们要能快速找到要显示的cell。</p>
+<p>我们以scrollview的左边开始找，首先找到第一个可见的cell，接下来只需要在可见区域内依次逐个显示接下来的可见cell就可以了（从左往右铺）。那么怎么确定当前的offset左边第一个cell的index是什么呢？ 我们很容易得出结论满足cell.startX &gt;= offset.x &amp;&amp; offset.x &lt; cell.startX + width就是我们要找的cell。很容易想到方法是遍历我们刚刚计算好的cell位置的数组,这个方法的确是可行的，但是我们前面说过了，offset变化非常频繁，每一次offset的改变我们都需要执行一次这种查找。我们要尽可能提高这种查找效率。</p>
+<p>仔细想想，cell的位置数据是天然有序的，这里我们可以用到二分查找来优化，这样大大地提高了效率。下面给出根据offset查找cell index 的方法</p>
+<figure class="highlight plain"><figcaption><span>offset 找cell的index</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (NSInteger) findColumForOffsetX: (CGFloat) xPosition inRange: (NSRange) range</span><br><span class="line">&#123;</span><br><span class="line">    if ([[self columModels] count] == 0) return 0;</span><br><span class="line">    </span><br><span class="line">    PSHorizontalTableCellModel* cellModel = [[PSHorizontalTableCellModel alloc] init];</span><br><span class="line">    cellModel.startX = xPosition;</span><br><span class="line">    </span><br><span class="line">    NSInteger returnValue = [[self columModels] indexOfObject: cellModel</span><br><span class="line">                                                inSortedRange: range</span><br><span class="line">                                                      options: NSBinarySearchingInsertionIndex</span><br><span class="line">                                              usingComparator: ^NSComparisonResult(PSHorizontalTableCellModel* cellModel1, PSHorizontalTableCellModel* cellModel2)&#123;</span><br><span class="line">                                                     if (cellModel1.startX &lt; cellModel2.startX)</span><br><span class="line">                                                         return NSOrderedAscending;</span><br><span class="line">                                                     return NSOrderedDescending;</span><br><span class="line">                                             &#125;];</span><br><span class="line">    if (returnValue == 0) return 0;</span><br><span class="line">    return returnValue-1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>####将cell放到scrollview上面去<br>前面我们已经知道了每一个cell的位置，也有实现了查找当前需要显示的cell的index的方法。接下来就是要往scrollview上面放cell了。思路也很直接，从最左边的开始放如果没有超出右边界就一直尝试放下一个，这里给出具体实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">- (void) layoutTableColums</span><br><span class="line">&#123;</span><br><span class="line">    if (_columModels.count &lt;= 0) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    CGFloat currentStartX = [self contentOffset].x;</span><br><span class="line">    CGFloat currentEndX = currentStartX + [self frame].size.width;</span><br><span class="line">    </span><br><span class="line">    NSInteger columToDisplay = [self findColumForOffsetX:currentStartX inRange:NSMakeRange(0, _columModels.count)];</span><br><span class="line">    </span><br><span class="line">    NSMutableIndexSet* newVisibleColums = [[NSMutableIndexSet alloc] init];</span><br><span class="line">    </span><br><span class="line">    CGFloat xOrgin;</span><br><span class="line">    CGFloat columWidth;</span><br><span class="line">    do</span><br><span class="line">    &#123;</span><br><span class="line">        [newVisibleColums addIndex: columToDisplay];</span><br><span class="line">        </span><br><span class="line">        xOrgin = [self cellModelAtIndex:columToDisplay].startX;</span><br><span class="line">        columWidth = [self cellModelAtIndex:columToDisplay].width;</span><br><span class="line">        </span><br><span class="line">        PSHorizontalTableCell *cell = [self cellModelAtIndex:columToDisplay].cachedCell;</span><br><span class="line">        </span><br><span class="line">        if (!cell)</span><br><span class="line">        &#123;</span><br><span class="line">            cell = [[self dataSource] ps_tableView:self columForIndexPath:columToDisplay];</span><br><span class="line">            [self cellModelAtIndex:columToDisplay].cachedCell = cell;</span><br><span class="line">            </span><br><span class="line">            cell.frame = CGRectMake(xOrgin, 0, columWidth - kColumMargin, self.bounds.size.height);</span><br><span class="line">            [self addSubview: cell];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        columToDisplay++;</span><br><span class="line">    &#125;</span><br><span class="line">    while (xOrgin + columWidth &lt; currentEndX &amp;&amp; columToDisplay &lt; _columModels.count);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">//    NSLog(@&quot;laying out %ld row&quot;, [_columModels count]);</span><br><span class="line">    </span><br><span class="line">    //将已经不可见的cell进行回收</span><br><span class="line">    [self returnNonVisibleColumsToThePool:newVisibleColums];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//offset改变的时候要调用layoutColums</span><br><span class="line">- (void)setContentOffset:(CGPoint)contentOffset</span><br><span class="line">&#123;</span><br><span class="line">    [super setContentOffset:contentOffset];</span><br><span class="line">    [self layoutTableColums];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>每一次offset发生变化，都要调用这个方法刷新cell，当前已经可见的cell没必要多次处理，所以这其中做了缓存处理。</p>
+<h4 id="cell的回收和复用"><a href="#cell的回收和复用" class="headerlink" title="cell的回收和复用"></a>cell的回收和复用</h4><h5 id="回收"><a href="#回收" class="headerlink" title="回收"></a>回收</h5><p>为了实现cell的回收我们要维护一个cell池，我们这里使用的数据结构是队列（NSMutableArray）。每一次offset改变cell都有可能从可见变成不可见，所以在cell刷新的最后要将不可见的cell回收放入到可复用cell池当中。思路比较直接，因为我们这里维护了可见cell的index，所以每一次刷新cell以后得到新的可见cell和之前旧的可见cell进行比较就可以找出需要回收的cell。</p>
+<figure class="highlight plain"><figcaption><span>回收</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- (void) returnNonVisibleColumsToThePool: (NSMutableIndexSet*) currentVisibleColums</span><br><span class="line">&#123;</span><br><span class="line">    [_visibleColums removeIndexes:currentVisibleColums];</span><br><span class="line">    [_visibleColums enumerateIndexesUsingBlock:^(NSUInteger columIdx, BOOL *stop)&#123;</span><br><span class="line">         PSHorizontalTableCell* tableViewCell = [self cellModelAtIndex:columIdx].cachedCell;</span><br><span class="line">         if (tableViewCell)</span><br><span class="line">         &#123;</span><br><span class="line">             [_resuableColumes addObject:tableViewCell];</span><br><span class="line">             [tableViewCell removeFromSuperview];</span><br><span class="line">             [self cellModelAtIndex:columIdx].cachedCell = nil;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;];</span><br><span class="line">    </span><br><span class="line">    self.visibleColums = currentVisibleColums;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="复用"><a href="#复用" class="headerlink" title="复用"></a>复用</h5><p>复用的话，就是我们平时非常熟悉的dequeueReusableCellWithIdentifier，实现比较简单，只要遍历我们前面维护的可复用cell池，找到对应的reusable identifier就行了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">- (PSHorizontalTableCell *)dequeueReusableCellWithIdentifier:(NSString *)reuseIdentifier</span><br><span class="line">&#123;</span><br><span class="line">    PSHorizontalTableCell *poolCell = nil;</span><br><span class="line">    </span><br><span class="line">    for(PSHorizontalTableCell *cell in _resuableColumes)&#123;</span><br><span class="line">        if ([cell.reusableIdentifier isEqual:reuseIdentifier]) &#123;</span><br><span class="line">            poolCell = cell;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if (poolCell) &#123;</span><br><span class="line">        [_resuableColumes removeObject:poolCell];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return poolCell;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###总结<br>这样一来，我们就实现了一个可以使用的水平UITableView了。我还省略了一些细节，完整的源代码请到<a href="https://github.com/nightwolf-chen/Horizontal-UITableView" target="_blank" rel="external">github</a>。</p>
+<p>总结一下UITableView实现过程当中的几个关键：</p>
+<blockquote>
+<p>1.预先计算每个cell的位置。</p>
+<p>2.高效地寻找当前需要显示的cell（二分查找）。</p>
+<p>3.根据offset变化对cell布局然后进行回收复用。</p>
+</blockquote>
+<p>这样看起来，UITableView也是可以轻松理解的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.nirvawolf.com/2015-01-31-at-[?]-ge-heng-xiang-uitableviewshi-xian.html" data-id="cilg4snni0000mi8kzn6zrwsi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/03/06/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2014/09/16/2014-09-16-effective-objective-c-2/">Effective Objective-C(2)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/09/15/2014-09-15-effective-objective-c/">Effective Objective-C (1)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/09/04/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti/">iOS 7 UIImagePicker 黑屏问题</a>
+          </li>
+        
+          <li>
+            <a href="/2014/08/26/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/">自行实现UITabbarController的思路</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Jidong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

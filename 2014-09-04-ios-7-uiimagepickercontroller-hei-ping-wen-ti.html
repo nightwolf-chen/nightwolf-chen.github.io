@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS 7 UIImagePicker 黑屏问题 | Jidong&#39;s Time</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前几天一个同事遇到一个很奇怪的bug，就是有时候iOS 7上面的UIImagePicker（也就是照相的那个界面）出现黑屏。具体来说就是在多次进入UIImagePicker的时候，有时候preview会出现较长一段时间的黑屏。
+我们一起看了具体的代码，就逻辑而言没有看出什么问题。一般的代码都是类似于这样调用相机的
+相机调用代码12345UIImagePickerController *photoP">
+<meta property="og:type" content="website">
+<meta property="og:title" content="iOS 7 UIImagePicker 黑屏问题">
+<meta property="og:url" content="http://blog.nirvawolf.com/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti.html">
+<meta property="og:site_name" content="Jidong's Time">
+<meta property="og:description" content="前几天一个同事遇到一个很奇怪的bug，就是有时候iOS 7上面的UIImagePicker（也就是照相的那个界面）出现黑屏。具体来说就是在多次进入UIImagePicker的时候，有时候preview会出现较长一段时间的黑屏。
+我们一起看了具体的代码，就逻辑而言没有看出什么问题。一般的代码都是类似于这样调用相机的
+相机调用代码12345UIImagePickerController *photoP">
+<meta property="og:updated_time" content="2016-03-06T05:11:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 7 UIImagePicker 黑屏问题">
+<meta name="twitter:description" content="前几天一个同事遇到一个很奇怪的bug，就是有时候iOS 7上面的UIImagePicker（也就是照相的那个界面）出现黑屏。具体来说就是在多次进入UIImagePicker的时候，有时候preview会出现较长一段时间的黑屏。
+我们一起看了具体的代码，就逻辑而言没有看出什么问题。一般的代码都是类似于这样调用相机的
+相机调用代码12345UIImagePickerController *photoP">
+  
+    <link rel="alternate" href="/atom.xml" title="Jidong&#39;s Time" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jidong&#39;s Time</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A Jidong Blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.nirvawolf.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-undefined" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti.html" class="article-date">
+  <time datetime="2014-09-04T14:19:13.000Z" itemprop="datePublished">2014-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS 7 UIImagePicker 黑屏问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前几天一个同事遇到一个很奇怪的bug，就是有时候iOS 7上面的UIImagePicker（也就是照相的那个界面）出现黑屏。具体来说就是在多次进入UIImagePicker的时候，有时候preview会出现较长一段时间的黑屏。</p>
+<p>我们一起看了具体的代码，就逻辑而言没有看出什么问题。一般的代码都是类似于这样调用相机的</p>
+<figure class="highlight plain"><figcaption><span>相机调用代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">UIImagePickerController *photoPicker = [[UIImagePickerController alloc] init];</span><br><span class="line">photoPicker.delegate = self;</span><br><span class="line">photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;</span><br><span class="line">[self presentViewController:photoPicker animated:YES completion:NULL];</span><br></pre></td></tr></table></figure>
+<p>我在网上搜索解决方案时发现这个问题在iOS 7上面比较常见，而且目前没有人能够给出一个具体合理的解释。这可能是iOS 7系统的一个bug，因为一个同事在iOS 6上面试过没有出现同样的问题。努力了一段时间最终还是解决了这个bug，总结一下这个bug的原因和解法。</p>
+<p>###由于多次初始化UIImagePicker内存泄露导致的问题</p>
+<p>这个原因是一种猜测，有一些人遇到这种问题的解决方案是尽量减少UIImagePicker初始化次数。有人在监视UIImagePicker的时候发现了内存泄露问题，在这种情况下可以在使用UIImagePicker的时候只初始化一次方法。我甚至发现了有个人将UIImagePicker做成单例来解决问题。按照上面对picker的使用代码，可以对应这样修改：</p>
+<figure class="highlight plain"><figcaption><span>只在一个要使用的地方初始化一次</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-(UIImagePickerController *)imagePicker&#123;</span><br><span class="line">    if(!_imagePicker)&#123;</span><br><span class="line">        _imagePicker = [[UIImagePickerController alloc]init];</span><br><span class="line">        _imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;</span><br><span class="line">    &#125;</span><br><span class="line">    return _imagePicker;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[self presentViewController:self.imagePicker animated:YES completion:nil];</span><br></pre></td></tr></table></figure>
+<p>我试过了这个方法但是不见效，所以我的问题不是这个问题导致的。</p>
+<p>###主要原因：在非主线程操作UI</p>
+<p>后来我在StackOverflow上面看到一个非常详细的帖子<a href="http://stackoverflow.com/questions/19081701/ios-7-uiimagepickercontroller-has-black-preview" target="_blank" rel="external">this</a></p>
+<p>里面提到了一个非常容易忽略的问题：在非主线程操作UI。<br>那么怎样才算是<strong><em>操作UI呢</em></strong>？这里有一个可以100%复现这个bug的项目：<a href="https://github.com/bartvandeweerdt/CameraTest" target="_blank" rel="external">bug复现的demo</a></p>
+<p>这个demo里面在子线程里面做了如下操作：</p>
+<figure class="highlight plain"><figcaption><span>子线程操作</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@autoreleasepool &#123;</span><br><span class="line">      self.theView = [[UIView alloc] init];</span><br><span class="line">      </span><br><span class="line">      for (int i = 0 ; i &lt; 2 ; i++) &#123;</span><br><span class="line">          NSLog(@&quot;%f&quot;, sqrt(i));</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      [(NSObject *) self.delegate performSelectorOnMainThread:@selector(operationDidFinish:) withObject:self waitUntilDone:NO];</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>子线程里面只是初始化了了一个UIView，这就算是UI操作，然后就导致了这个bug发生。你可以试一下注释掉UIView初始化那一句，bug竟然就不出现了，真是很神奇啊。这的确是iOS 7本身的一个bug。</p>
+<p>我们所遇到的黑屏就是这个原因导致的，随后我们也排查了比较长一段时间，竟然是因为在<strong><em>子线程里面dealloc了一个UIImageView</em></strong>！</p>
+<p>###一段神代码</p>
+<p>我还发现了一段神代码，你只要将这个文件放到你的项目里面，当你在非主线程操作UI的更新操作的时候就抛异常！是不是很神奇？就像一个守卫一样保护着。它的实现原理就是在应用启动的时候将UIView的setNeedsDisplay等更新方法method swizzling一下，在对应方法调用的时候加入是否在主线程的判断逻辑。<br>代码链接:<a href="https://gist.github.com/steipete/5664345" target="_blank" rel="external">PSPDFUIKitMainThreadGuard.m</a></p>
+<p>使用它，你只需要把它放到你的工程里面，不需要更多的操作了，Good luck！</p>
+<p>###永远不要在主线程以外的线程进行UIView相关的操作</p>
+<p>这其实在苹果的UIView programm guide里面已经强调了，不过看来很多人都会忽略到这一点。如果你真这样做了，UI就可能会出现一些奇奇怪怪的问题，不止是黑屏那么简单了！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.nirvawolf.com/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti.html" data-id="cilg4f9a40002j08kee9b1uhj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Jidong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
