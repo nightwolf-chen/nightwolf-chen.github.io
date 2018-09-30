@@ -1,36 +1,0 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Effective Objective-C (1) · Jidong's Time</title><meta name="description" content="Effective Objective-C (1) - Jidong"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/u/2019930243" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/nightwolf-chen" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Effective Objective-C (1)</h1><div class="post-time">2014年9月15日</div><div class="post-content"><h1 id="一本好书推荐"><a href="#一本好书推荐" class="headerlink" title="一本好书推荐"></a>一本好书推荐</h1><p>最近花了一阵子的时间读了《Effective Objective-C 2.0》这本书，感觉挺不错。我觉得这本书值得每一个OC程序员读一读。它里面从很多个角度给出了OC在日常开发当中的一些实用建议，很有效地提升代码的质量。我根据自己的阅读经历，在这里总结一下这本书重要的内容。</p>
-<h3 id="让自己熟悉Objective-C"><a href="#让自己熟悉Objective-C" class="headerlink" title="让自己熟悉Objective-C"></a>让自己熟悉Objective-C</h3><ul>
-<li><p>首先要理解oc的根源，oc是一个面向对象的语言就像java和c++一样，但其实oc里面的发消息机制是来源于smalltalk的。java和c++里面的函数调用和oc里面的发消息的作用是一样的，但是它们还是有区别的，函数（方法）调用是在编译时候确定的，而发消息却是在runtime确定的。oc是c的一个超集合（这个有点类似于c++），也就是说你可以在oc里面使用c的语法，我很喜欢这个特性。</p>
-</li>
-<li><p>要尽量减少头文件的import：尽量将头文件的引用推迟到m文件当中，因为在头文件中直接import很有可能导致预处理的问题，而且影响编译效率。多用@class，@protocol这种编译标记，尽量不要在不需要的地方暴露过多的内容。这和c++里面namespace的使用原则差不多，尽量避免名字空间的污染。有些人很喜欢在文件开始的地方using一个namespace， 这就造成了不必要的污染。总之，让import的影响范围最小化。</p>
-</li>
-<li><p>多使用字面量：为什么使用字面量？简单易懂，可读性强。比较常用的NSString的字面量，比如：@”Hello world”。像NSDictionary，NSArray，NSNumber，这些的字面量都比他们的构造方法好用的多，@{},@[],@()。还可以通过NSMutableArray *mutable = [@[@””,@””] mutableCopy] ;构造mutable的对象。NSArray还可以通过类似于数组的下标方法来访问，array[0]。另外字面量还有一个好处，就是编译器会在编译的时候检查容器中是否传入了nil。综上所述，没有理由不使用字面量^_^</p>
-</li>
-<li><p>使用有类型的常量而不是#define。我发现很多人喜欢使用宏来定义常量（甚至有些人有事没事放在头文件里面！）。的确有时候宏可以很方便地完成一些功能，但是有类型的常量才是比较好的选择。宏只是文本的替换没有类型检查，很显然有类型的常量要安全一些。而且有时候有意无意宏可能会被重新定义，这也是非常蛋疼的。一般常量都以一个小写的k字母开头，局部的定义使用static const等关键字，如果是全局的常量则使用extern关键字。只有在类型常量无法达成你的需求的时候才考虑使用宏。</p>
-</li>
-<li><p>使用enum枚举类型来表示状态（States），选项（Options），状态code（Status Codes）。一些不好的习惯是使用0，1，2这类整数型来表示一些状态，但到底表示神马意思，只有写这个代码的人才知道。用enum来表示Options的时候可以使用这种技巧：</p>
-</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Options&#123;</span><br><span class="line">	op1 = <span class="number">0</span>,</span><br><span class="line">	op2 = <span class="number">1</span> &lt;&lt; <span class="number">0</span>,</span><br><span class="line">	op3 = <span class="number">1</span> &lt;&lt; <span class="number">1</span>,</span><br><span class="line">	op4 = <span class="number">1</span> &lt;&lt; <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样就可以同时使用多个选项，通过|操作符，在判断的时候使用&amp;来进行判断。苹果提供了几个可以方便定义枚举的宏，可以明确指定枚举的type，比如：</p>
-<figure class="highlight plain"><figcaption><span>enum example</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NS_ENUM(NSUInteger,EOCConnectionState)&#123;</span><br><span class="line">...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">：NS_ENUM(NSUInteger,EOCConnectionDirection)&#123;</span><br><span class="line">...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>这是针对oc这个语言特性而提出的一些实用建议。</p>
-</div></article></div></section><footer><div class="paginator"><a href="/2014/09/16/effective-objective-c-2/" class="prev">上一篇</a><a href="/2014/09/04/ios-7-uiimagepickercontroller-hei-ping-wen-ti/" class="next">下一篇</a></div><div data-thread-key="2014/09/15/effective-objective-c/" data-title="Effective Objective-C (1)" data-url="http://blog.nirvawolf.com/2014/09/15/effective-objective-c/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"jidong"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
-
-</script><div id="disqus_thread"></div><script>var disqus_shortname = 'nirvawolf';
-var disqus_identifier = '2014/09/15/effective-objective-c/';
-var disqus_title = 'Effective Objective-C (1)';
-var disqus_url = 'http://blog.nirvawolf.com/2014/09/15/effective-objective-c/';
-(function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();</script><script id="dsq-count-scr" src="//nirvawolf.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2016 <a href="http://blog.nirvawolf.com">Jidong</a>, unless otherwise noted.</p></div></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1-54003335-1",'auto');ga('send','pageview');</script><script src="https://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>
