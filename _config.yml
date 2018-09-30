@@ -31,7 +31,6 @@ plugins:
   - jekyll-paginate
   - jekyll-gist
   - jekyll-language-plugin
-  - Algolia
   - Feed 
   - Scholar 
   - Tagging 
