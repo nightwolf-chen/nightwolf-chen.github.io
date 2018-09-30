@@ -10,6 +10,41 @@
   </url>
   
   <url>
+    <loc>http://www.jidongchen.com/post/2015-01-31-a-heng-xiang-uitableviewshi-xian/</loc>
+    <lastmod>2015-01-31T21:27:03+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.jidongchen.com/post/2014-09-16-effective-objective-c-2/</loc>
+    <lastmod>2014-09-16T23:04:16+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.jidongchen.com/post/2014-09-15-effective-objective-c/</loc>
+    <lastmod>2014-09-15T22:17:36+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.jidongchen.com/post/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti/</loc>
+    <lastmod>2014-09-04T22:19:13+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.jidongchen.com/post/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/</loc>
+    <lastmod>2014-08-26T20:18:13+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://www.jidongchen.com/post/2014-08-21-what-are-the-qualities-of-a-good-programmer/</loc>
     <lastmod>2014-08-21T00:16:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -18,54 +53,7 @@
   
   <url>
     <loc>http://www.jidongchen.com/post/2014-08-20-blog-like-a-hacker/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jidongchen.com/post/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jidongchen.com/post/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jidongchen.com/post/2014-09-15-effective-objective-c/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jidongchen.com/post/2014-09-16-effective-objective-c-2/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jidongchen.com/post/2015-01-31-a-heng-xiang-uitableviewshi-xian/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jidongchen.com/post/2016-06-23/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jidongchen.com/post/2017-01-19/</loc>
+    <lastmod>2014-08-20T15:12:47+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -83,37 +71,7 @@
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jidongchen.com/post/2017-05-16-%E8%A7%86%E9%A2%91yuv420%E6%B8%B2%E6%9F%93-ios-opengl-es/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jidongchen.com/post/http2.0%E7%9A%84%E4%BC%98%E5%8A%BF/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jidongchen.com/post/ios/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>http://www.jidongchen.com/post/%E6%88%90%E4%B8%BA%E5%A5%BD%E7%94%B7%E5%8F%8B%E7%9A%8415%E4%B8%AA%E5%BB%BA%E8%AE%AE/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.jidongchen.com/post/%E8%89%BA%E6%9C%AF/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -125,7 +83,22 @@
   </url>
   
   <url>
+    <loc>http://www.jidongchen.com/tags/blog/</loc>
+    <lastmod>2018-09-30T16:12:51+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.jidongchen.com/categories/blog/</loc>
+    <lastmod>2018-09-30T16:12:51+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.jidongchen.com/categories/</loc>
+    <lastmod>2018-09-30T16:12:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -164,6 +137,7 @@
   
   <url>
     <loc>http://www.jidongchen.com/tags/</loc>
+    <lastmod>2018-09-30T16:12:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

@@ -1,0 +1,154 @@
+---
+date: 2017-04-13 14:55
+status: public
+title: 用C链表实现通用队列Queue
+---
+
+    队列是最为常见的的数据结构之一，每个合格的程序员都应该掌握如何实现一个队列，这里我讨论如何实现一个线程安全的可阻塞队列的实现。
+
+完整代码请参考[jdc_sdl_queue.c](https://github.com/nightwolf-chen/JDCFFPlayer/blob/master/JDCFFMedia/jdc_sdl_queue.c)。
+    
+## 队列结构的定义
+```c
+struct JDCSDLPacketQueue {
+    void *first_pk;//链表头指针
+    void *last_pk;//链表尾指针
+    int size;//当前size    
+    SDL_mutex *mutex;//互斥锁
+    SDL_cond *cond;//条件
+};
+```
+## 队列的基本操作
+经典的队列要要支持几个基本操作
++ Push 从末尾添加元素。
++ pop 从头部移除元素，并返回头部的指针。
++ front 获取头部的指针。
+从队列的定义我们可以推断出使用单向链表来实现是非常方便的。我们需要定义一个链表的结构来就行数据的存储。我的链表node定义如下
+```c
+typedef struct JDCQueueNode {
+    struct JDCQueueNode *next;
+    void *data;
+}JDCQueueNode;
+```
+我将数据指针存在Node的data字段，而data是一个通用指针，我们可以存放任意数据的指针。
+
+让我们来看看队列相关方法的定义.
+```c
+//为Queue动态分配内存。
+JDCSDLPacketQueue *jdc_packet_queue_alloc();
+//初始化队列，主要是初始化锁相关的内容。
+void jdc_packet_queue_init(JDCSDLPacketQueue *queue);
+//获取当前的size
+int jdc_packet_queue_size(JDCSDLPacketQueue *queue);
+//push
+int jdc_packet_queue_push(JDCSDLPacketQueue *queue , void *data);
+//front
+void *jdc_packet_queue_front(JDCSDLPacketQueue *queue);
+//pop
+void *jdc_packet_queue_pop(JDCSDLPacketQueue *queue);
+//这个方法尝试获取队列头部的元素。Block参数为1时，如果不存在则会阻塞当前线程，直到有元素为止。
+int jdc_packet_queue_get_packet(JDCSDLPacketQueue *queue , void **data , int blockThread);
+
+```
+
+## 队列的实现
+队列的实现主要是对链表的操作，我们先来看看push的操作：
+```c
+int jdc_packet_queue_push(JDCSDLPacketQueue *queue , void *date)
+{
+    //分配一个新的链表节点来存储数据
+    JDCQueueNode *listNode = (JDCQueueNode *)malloc(sizeof(JDCQueueNode));
+    
+    if (!listNode) {
+        return -1;
+    }
+    
+    listNode->data = data;
+    listNode->next = NULL;
+
+    //上锁处理多线程的问题    
+    SDL_LockMutex(queue->mutex);
+    
+    //指针操作，如果是第一个节点直接复制到头指针
+    //否则将新节点放到最后一个节点的next    
+    if (queue->first_pk == NULL) {
+        queue->first_pk = listNode;
+    }else{
+        ((JDCQueueNode *)queue->last_pk)->next = listNode;
+    }
+
+    //更新尾指针 
+    queue->last_pk = listNode;
+    queue->size ++;
+    
+    //发信号唤醒等待线程    
+    SDL_CondSignal(queue->cond);
+    //解锁
+    SDL_UnlockMutex(queue->mutex);
+    
+    return 0;
+}
+
+```
+
+然后是pop操作，将第一个元素拿出来，然后将其从队列中移除：
+```c
+void *jdc_packet_queue_pop(JDCSDLPacketQueue *queue)
+{
+    void *data = NULL;
+    //加锁
+    SDL_LockMutex(queue->mutex);
+    
+    if (queue->first_pk) {
+        //取出第一个元素
+        JDCQueueNode *firstPkl = queue->first_pk;
+        data = firstPkl->data;
+        //更新指针
+        queue->first_pk = firstPkl->next;
+        queue->size--;
+        
+        //因为链表node是动态分配内存，需要释放
+        free(firstPkl);
+    }
+    
+    SDL_UnlockMutex(queue->mutex);
+    
+    return data;
+}
+```
+再来看可阻塞的的获取数据方法：
+```c
+//这个方法尝试获取队列第一个元素，如果存在则立即返回。如果队列为空而且Block为1的时候会阻塞
+int jdc_packet_queue_get_packet(JDCSDLPacketQueue *queue , void **data , int block)
+{
+    int ret;
+    
+    SDL_LockMutex(queue->mutex);
+    //在这个无限循环中我尝试获取第一个数据
+    while (1) {
+        if (queue->quit) {
+            ret = -1;
+            break;
+        }
+        
+        //如果拿到数据立即返回，否则挂起等待信号      
+        if (queue->first_pk) {
+            *data = jdc_packet_queue_pop(queue);
+            ret = 1;
+            break;
+        }else if(block){
+            SDL_CondWait(queue->cond, queue->mutex);
+        }else{
+            ret = 0;
+            break;
+        }
+    }
+    
+    SDL_UnlockMutex(queue->mutex);
+    
+    return ret;
+}
+```
+
+## 总结
+这样我们就实现了一个通用的可阻塞等待队列了。我们可以在没有数据的时候先将线程挂起，有数据的时候自动唤醒继续执行。完整代码请参考[jdc_sdl_queue.c](https://github.com/nightwolf-chen/JDCFFPlayer/blob/master/JDCFFMedia/jdc_sdl_queue.c)。

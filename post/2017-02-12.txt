@@ -1,0 +1,48 @@
+---
+date: 2017-02-12 11:13
+status: public
+title: 浅谈NSRunloop
+---
+
+    iOS开发中有一个不起眼却比较重要的概念NSRunLoop。
+## NSRunLoop的定义和实质
+### 定义
+  我首先打开NSRunLoop头文件里面是这么写的
+```
+The NSRunLoop class declares the programmatic interface to objects that manage input sources. An NSRunLoop object processes input for sources such as mouse and keyboard events from the window system, NSPort objects, and NSConnection objects. An NSRunLoop object also processes NSTimer events.
+```
+
+  简要意思：NSRunLoop类声明了对象管理输入源的接口。输入源包含从系统鼠标键盘的输入，NSPort对象，NSConnection对象。NSRunLoop也处理NSTImer的时间。
+  从这段文字中我们可以看到的NSRunLoop是跟输入源和NSTimer有关的。其实这理解起来还是有点抽象的。
+### 实质
+  其实从NSRunLoop的名称我们可以猜测，它其实是某一种循环。我查阅了Threading Programming Guide，里面的解释要更加清晰：NSRunLoop是一种和线程相关联的基础设施代码。它其实是一种事件处理循环，用来协调事件与任务。
+  我们可以用的代码来理解一下，下面这段伪代码简述一个包含NSPort，自定义输入，performSelector和NSTimer的NSRunLoop的大致结构（注意这只是简化抽象的伪代码）。
+``` c
+//Thread start
+while(!needExit){
+    handlePort();
+    handleCumstomInput();
+    selectorPerformed();//perform selector
+    timerFired();
+}
+//Thread end
+```
+**NSRunLoop本质是一种时间处理循环**。
+
+## 什么时候使用NSRunLoop，为什么要使用它
+  我看文档里面是这样写道的：使用NSRunLoop目的是让线程能够在有事情做的时候处于活跃状态，而没有事情的时候去休眠。
+  我们需要明确的一点是一个线程不一定要运行 NSRunloop。那么什么样的线程才需要使用NSRunLoop呢？最为直接的例子就是主线程。对于App的主线程来说，系统在启动阶段就为其配置和运行了相关的RunLoop。因为App本身要接受各种各样的输入，比如说touch event，对于主线程来说NSRunLoop是必不可少的。
+  需要注意的是我们自己创建的线程如果需要的话是要手动启动NSRunLoop的。你可以试验一下，把NSTimer加入到一个新建的线程runloop可以发现timer事件不触发，你要手动启动runloop才能正常。
+  通常我们在以下几种情况下需要在线程里面启动NSRunLoop。
+>* 使用ports或者自定义输入源和其它线程通信。
+>* 在线程上使用Timer。
+>* 使用performSelector方法
+>* 让线程做周期性的工作
+## NSRunLoopMode
+NSRunLoopMode定义了影响了两个方面。一个是哪些输入源是被监测的，另一方面是哪些run loop observers是被通知的。每一种Mode下面被检测的输入源都是不一样，被通知的observer也有区别。
+我们经常会遇到的一个问题：UIScrollView滚动的时候NSTimer事件无法触发,这就是Mode不对应导致的。NSTimer注册在defaultMode下面在ScrollView滚动的时候是不会被检测的，所以事件也不会触发。这种状况的解法是将Timer注册到commonMode。
+具体的Mode定义请参见文档.
+
+## 总结
+简单来说NSRunLoop就是运行在线程里面的一个事件处理循环，处理各种输入源和事件，不是线程必须的部分。在使用NSTimer的时候需要注意各种Mode以防出现timer不触发问题。
+  

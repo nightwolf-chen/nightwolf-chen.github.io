@@ -1,0 +1,319 @@
+---
+date: 2017-04-09 10:37
+status: public
+title: 实现一个JSON映射库
+---
+
+ 源码请到GitHub [源码地址](https://github.com/nightwolf-chen/JDCJsonExtension)
+
+    JSON序列化框架是iOS开发的必备代码库，我这里指的序列化是指JSON<->Models之间的转换。目前比较流行的有Mantle，JSONModel，还有国产的MJExtension，YYModel等。这些库都很优秀可以满足日常大部分的需求。
+## 为什么要重复造轮子
+我在项目中用过Mantle和JSONModel，用起来感觉都挺好的，但是它们都有一些方面我感觉不是很喜欢。
+>*  Mantle和JSONModel都需要继承自它们的基类来实现相关的能力。这增加了库与业务代码的耦合。比方说，我想在项目里面同时使用不同的Model类型就难以实现了。
+>*  对于自定义类型NSArray，JSONModel需要自定一个和类型同名的protocol来实现类型转换。例如：
+
+``` objective-c
+@protocol CustomClass<NSObject>
+@end
+@interface CustomClass : NSObject
+@end
+
+//我总觉得这种方式有点hack，为什么一定要写一个多余的protocol呢？
+@interface AModel : JSONModel
+@property (nonatomic,strong) NSArray<CustomClass> *customs;
+@end
+
+```
+>* Mantle自定义类型则需要自己实现对应的ValueTransformer。
+>* 另外在JSONModel的使用当中我还遇到过一个诡异的问题，比如时候你的Model实现了一下自定义的protocol的时候会导致序列化失败，我看了一下代码应该是oc类型解析的是时候出了问题。
+
+在Mantle和JSONModel之间选一个话，我会选择Mantle。Mantle非常稳定，功能强大，而且设计更加合理，功能强大。但是源代码而言我比较喜欢JSONModel的风格，思路清晰，风格统一。Mantle不知道是设计比较复杂还是怎样，代码看起来没有那么整洁清晰，当然这只是个人的一些看法。虽然说一些测评文章指出Mantle的性能在几个流行的框架中算是垫底的，但实际来看，稳定性和好的设计才是我们开发重点关注的点。
+实际上Mantle已经够用了，对于我自己来说它可能太重了。我的理解中JSON序列化的框架的职责是将JSON数据转化成Model。这其实是一个很自然的过程，我自己的需求只是需要最简单的方法转化成NSObject就行了，我不需要在框架内进行类似于NSDate这种复杂的转换。所以我打算实现一个最简易映射框架，同时也作为一个学习过程。
+
+## 基本思路
+大部分JSON映射框架都是基于Cocoa强大的runtime能力实现的。我们可以动态的获取类的properties，然后使用强大KVC来实现动态赋值。
+我的思路非常简单直接：
+> 1.获取类所有的Properties，然后解析出每个property的必要信息（类型，keypath等等）。
+> 2.使用JSONSerialization将Data或者String转换成NSDictionary或者NSArray，枚举类的properties通过key来获取NSDictionary里面的value然后赋值到对象里面。
+
+## 获取Class的properties
+利用oc的runtime方法，我们可以用一个循环拿到这个类的所有properties。为此我增加了一个NSObject的category:
+``` objective-c
+
++ (NSArray<JDCClassProperty *> *)jdc_classProperties
+{
+    //这里我们缓存一下properties一定程度上提升效率。
+    NSArray *properties = [self getCacheProperties];
+    if (!properties) {
+        Class cls = self;
+        NSMutableArray *all = [NSMutableArray new];
+        //我们需要遍历整一个继承链来获取所有的properties
+        while(cls != [NSObject class]){
+            [all addObjectsFromArray:[self jdc_getProperties:cls]];
+            cls = [cls superclass];
+        }
+        
+        properties = all;
+        [self setCachedProperties:all];
+    }
+    
+    return properties;
+}
+
++ (NSArray *)jdc_getProperties:(Class)class
+{
+    unsigned int pCount = 0;
+    //使用runtime相关方法来获取properties。
+    objc_property_t *properties = class_copyPropertyList(class, &pCount);
+    
+    NSMutableArray *pArray = [NSMutableArray new];
+    for(int i = 0 ; i < pCount ; i++){
+        objc_property_t property = properties[i];
+        //我在JDCClassProperty初始化阶段对property        进行解析
+        JDCClassProperty *clsProperty = [[JDCClassProperty alloc] initWithProperty:property];
+        if (!clsProperty.isReadyOnly) {
+            [pArray addObject:clsProperty];
+        }
+    }
+    
+    return pArray;
+}
+
++ (NSArray *)getCacheProperties
+{
+    return objc_getAssociatedObject(self, &kAssociatedCachePropertiesKey);
+}
+
++ (void)setCachedProperties:(NSArray *)properties
+{
+    objc_setAssociatedObject(self, &kAssociatedCachePropertiesKey,properties, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+
+
+
+
+```
+
+## 解析Property
+拿到的原始property是一种Type Encoding的字符串形。Apple有文档解释Type Encoding[文档连接](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html#//apple_ref/doc/uid/TP40008048-CH100-SW1)。我们需要对其进行解析，一个典型的NSString Encoding为这种形式:
+``` c
+T@"NSString",&,N,V_login
+```
+这个字符串包含了property的类型，读写属性，以及key（name）。把这些信息解析出来即可。我们看一下形式大概就知道Encoding的格式，具体可以去阅读以下文档。解析代码：
+``` objective-c
+- (void)_inspectProperty:(objc_property_t)property
+{
+    NSString *str = [self getPropertyAttributeString:property];
+    NSArray *components = [str componentsSeparatedByString:@","];
+    NSString *token = components[0];
+    //R代表只读属性，这里我们忽略只读属性
+    _isReadyOnly = [components containsObject:@"R"];
+    //'@'代表的是对象，是我们重点关注的类型。
+    if ([token characterAtIndex:1] == '@'
+        && token.length > 3
+        && [token characterAtIndex:2] == '\"') {
+        NSString *name = [token substringWithRange:NSMakeRange(3, token.length-4)];
+        
+        _propertyTypeName = name;
+        //JSONSerialization所支持的标准JSon类型。
+        if (sAllowedJSONTypes[name]) {
+            _propertyType = JDCClassPropertyStandandJsonType;
+            _isArray = [name isEqual:@"NSArray"];
+        }else{
+         //自定义类型，我们需要重点处理的类型。
+            _propertyType = JDCClassPropertyCustomType;
+        }
+    }else{
+        
+        NSString *encodeStr = [token substringWithRange:NSMakeRange(1, 1)];
+        
+        NSNumber *type = sTypeMappings[encodeStr];
+        if (type) {
+            _propertyType = [type unsignedIntegerValue];
+        }else{
+            _propertyType = JDCClassPropertyOtherType;
+        }
+    }
+}
+
+
+```
+
+解析完成后我们可以得到一个这种的类型：
+``` objective-c
+
+@interface JDCClassProperty : NSObject
+@property (nonatomic,assign,readonly) objc_property_t property;//c结构property
+@property (nonatomic,assign,readonly) JDCClassPropertyType propertyType;//property的类型
+@property (nonatomic,copy,readonly) NSString *propertyTypeName;//property的类名（比如NSString）
+@property (nonatomic,copy,readonly) NSString *propertyName;//property的名字（keypath）
+
+@property (nonatomic,assign,readonly) BOOL isArray;(用于标记是否为array类型)
+@property (nonatomic,assign,readonly) BOOL isReadyOnly;（是否为只读类型）
+
+
+- (id)initWithProperty:(objc_property_t)property;
+
+@end
+```
+## 映射的实现
+拿到了所有property的必要信息以后，需要做的就行把NSDictionary的值复制到我们的Model上面，这是一个递归的过程.
+我先用伪代码展示一下主要过程。
+``` c
+id initWithDic(dic){
+ //遍历当前class的所有property
+ for(property in class.properties){
+    //如果是自定义类型，则使用自定义类继续序列化，之后使用KVC赋值。
+    if(property.isCustomType){
+      Class CustomClass = NSClassFromString(property.typeName);
+      id custom = CustomClass.initWithDic(dic[property.name]);
+      self.setValueForKey(custom,property.name);
+    }else{
+      self.setValueForKey(dic[property.name],property.name);
+    }  
+  } 
+}
+```
+在实际实现代码之前我们需要几个模板方法
+``` objective-c
+//通过这个方法来定义keypath->jsonkey的映射
+//比如@property （nonatomic,strong）NSString *aid;
+// @{@"id":"123"}, 我们可以这样实现：
+//+(NSDictionary *)jdc_jsonSerializationKeyMapper{
+//    return @{@"aid":@"id"};
+//}
+ +(NSDictionary *)jdc_jsonSerializationKeyMapper;
+ 
+ //通过这个方法来确定array的item对应的类型，如果property
+//是NSArray我们需要用这个方法来制定自定义类。例如：
+//比如@property （nonatomic,strong）NSArray *items;
+// 我们可以这样实现：
+// +(NSDictionary *)jdc_KeyPathToClassNameMapper{
+//    return @{@"items":@"CustomClassName"};
+//}
+ +(NSDictionary *)jdc_KeyPathToClassNameMapper;
+ ```
+下面我们来看看实际的映射代码：
+``` objective-c
+- (id)initWithJsonDictionary:(NSDictionary *)jsonDictionary error:(NSError **)error
+{
+    self = [self init];
+    
+    NSDictionary *keyPathToJsonKey = [[self class] jdc_jsonSerializationKeyMapper];
+    NSDictionary *keyPathToClass = [[self class] jdc_KeyPathToClassNameMapper];
+    
+    NSArray *propertis = [[self class] jdc_classProperties];
+    for(JDCClassProperty *property in propertis){
+        
+        //Get json value for mapped keypath
+        id value = [self getJsonValue:property.propertyName
+                          jsonKeyPath:keyPathToJsonKey[property.propertyName]
+                           dictionary:jsonDictionary];
+        
+        if (!value) {
+            continue;
+        }
+        
+        switch (property.propertyType) {
+            case JDCClassPropertyStandandJsonType:{
+                
+                NSString *itemClassName = keyPathToClass[property.propertyName];
+                if (property.isArray && itemClassName) {
+                        Class itemClass = NSClassFromString(itemClassName);
+                        NSArray *values = [itemClass modelsFromJsonArray:value error:error];
+                    
+                        if (error) {
+                            return nil;
+                        }
+                    
+                        [self setValue:values forKey:property.propertyName];
+                }else{
+                    [self setValue:value forKey:property.propertyName];
+                }
+                
+            }
+                
+                break;
+            case JDCClassPropertyCustomType:{
+                Class customClass = NSClassFromString(property.propertyTypeName);
+                id tValue = [[customClass alloc] initWithJsonDictionary:value error:error];
+                [self setValue:tValue forKey:property.propertyName];
+            }
+                
+                break;
+                
+            case JDCClassPropertyOtherType:{
+                @throw [NSException exceptionWithName:@"unsupported json type"
+                                               reason:@"NSString, NSNumber, NSArray, NSDictionary and custom Class"
+                                             userInfo:nil];
+            }
+                break;
+            default:{
+                [self setValue:value forKey:property.propertyName];
+            }
+                break;
+        }
+    }
+    
+    return self;
+}
+
+- (id)getJsonValue:(NSString *)keyPath
+       jsonKeyPath:(NSString *)jsonKeyPath
+        dictionary:(NSDictionary *)dicionary
+{
+    if (jsonKeyPath) {
+        return [dicionary valueForKeyPath:jsonKeyPath];
+    }else{
+        return [dicionary valueForKeyPath:keyPath];
+    }
+}
+
+```
+到这里JSON map核心代码已经完成了。我们已经实现了一个简单可用的JSON映射框架。另外我还实现了toDictionary功能，思路是差不多的，具体可以参考代码，[完整代码github](https://github.com/nightwolf-chen/JDCJsonExtension)。
+
+## 额外实现NSCoding
+NSKeyedArchiver的对象序列化功能平时也会经常用到，但是手写encode和decode方法有点烦，明明都是类似的代码为什么要一直重复的呢。我们可以利用之前的实现的基础用几行代码实现NSKeyedArchiver的encode和decode，我们只需要添加一个NSObject Category即可：
+``` objective-c
+
+@implementation NSObject (JDCNSCoding)
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [self init]) {
+        NSArray *propertis = [[self class] jdc_classProperties];
+        for(JDCClassProperty *property in propertis){
+            if (property.propertyType == JDCClassPropertyOtherType) {
+                @throw [NSException exceptionWithName:@"unsupported json type"
+                                               reason:@"decoding failed"
+                                             userInfo:nil];
+            }
+            id value = [aDecoder decodeObjectForKey:property.propertyName];
+            [self setValue:value forKey:property.propertyName];
+        }
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    NSArray *propertis = [[self class] jdc_classProperties];
+    for(JDCClassProperty *property in propertis){
+        if (property.propertyType == JDCClassPropertyOtherType) {
+            @throw [NSException exceptionWithName:@"unsupported json type"
+                                           reason:@"encoding failed"
+                                         userInfo:nil];
+        }
+        id value = [self valueForKey:property.propertyName];
+        [aCoder encodeObject:value forKey:property.propertyName];
+    }
+}
+@end
+
+```
+需要注意的是这里支持的类型是有限的，具体支持的类型可以参看JDCClassProperty的头文件。
+
+## 总结
+至此，我们已经知道怎么实现一个JSON<->Model之间映射的框架，此外我们额外实现了NSCoding的快捷方式。我在文章中只提到了关键的代码。如果有兴趣可以参看[完整代码](https://github.com/nightwolf-chen/JDCJsonExtension)。我已经在我自己的项目当中使用这个简答的Mapper了，你也可以尝试，甚至自己实现一个。Keep it simple，keep it grace。作为一种学习过程又何尝不可呢？

@@ -1,0 +1,100 @@
+---
+date: 2017-04-17 17:40
+status: public
+title: Xcode依赖管理讨论与实践
+---
+
+    依赖管理是每一个项目都会遇到的问题，在多模块协作的时候尤其重要。
+
+## 依赖管理方案
+
+|       管理方式    |
+|------------------|
+|  **石器时代**:直接将代码加入target一起编译，这样做的唯一好处就是简单直接。 |
+| **子项目**:将依赖模块以子项目的形式加入到项目中，这种方法可以说是xcode官方提供的一种依赖支持，没啥大问题，就是需要手动操作。|
+| **子项目 + submodule**:子项目成独立一个git库，然后通过子项目的形式添加到依赖的项目里。这种方式比单纯的子项目形式又更进一步。|
+| **Cocoapods**：iOS必备工具，开源神器，最大的优势就是方便而且优雅。现在大家比较诟病的主要是中心化（在中国更新master更是让人蛋疼），还有就是侵入性的集成方式（会修改原项目的一些配置）。|
+| **Carthage**：去中心化的设计是亮点，它只会帮你下载编译依赖，而把集成交给你。用法跟cocoapods类似。|
+## 方案的选择
+### 小型项目
+对于个人项目或者说小项目而言，选择哪种方式去管理依赖并不是那么重要。我的观点是对于小项目使用Cocopods，它能满足你所有的需求，而且操作足够简单，自己只需要维护一个Podfile就行了也不用考虑协作的问题。
+### 多人协作项目
+当项目发展到一定规模以后模块化将成为趋势，这个时候依赖管理的方式选择会直接影响开发效率。对于这种多模块共同开发协作的情况可以考虑“submodule+subproject”或者Cocoapods私有库的形式。我们来看看这两种方式的优势和不足。
+#### Submodule & Subproject
+- 代码库分离
+- 代码同步高效
+- 使用简单，无需额外工具
+- 学习成本低
+
+#### Cocopods私有库
+- 代码库分离
+- 代码更新稍显复杂
+- 集成方便，多模块高效集成
+- 管理方式规范化
+- 开源代码支持
+- 学习成本稍高
+
+对比来看我们可以看到Cocoapods在项目达到一定规模的时候有显著的优势，尤其是模块较多的情况。但是如果你只有一个模块需要协同开发，submodule的方式也是很好的。毕竟搭建Pod私有库包括维护自己的Pod库都要走一套固定的流程，如果不是模块较多手动维护比较费力的时候，submodule是我首先考虑的方案。
+
+另外carthage+静态库的方式也是一个不错的选择，跟Pod类似，不过我没有实际使用过保留我的意见。
+
+## Submodule & Subproject集成方式简介
+1. 新建一个静态库项目DemoModule。
+2. 把模块相关代码加到静态库项目，编译通过。
+3. 将DemoModule push到git服务器（GitHub或者私有Gitlab）。
+4. 在主项目Demo中用git submodule add 命令引入DemoModule，然后把DemoModule项目拖到主项目Demo中。
+5. 配置Target dependency，Link with library，**配置头文件搜索路径**（Header search path）。
+6. 新clone的项目需要先初始化子模块
+```c
+git submodule init
+git submodule update
+```
+这样你完成了一个submodule的子项目引用集成了。
+
+## Cocopod 私有库简介
+创建私有Pod库我们要分两步：
+1. 创建私有Spec Repo，这里我取名为DemoRepo
+2. 创建Pod lib,这里我命名为DemoLib然后推送到DemoRepo。
+
+### 创建私有Sepc Repo
+这个过程比较简单，你只需要一个私有的git库就行了，它可以是公开的或者私有的。如果只是管理自己私有的东西，一开始为空就行了，不一定要fork官方的Spec Repo。
+比如说我们的git库的地址为:https://demo/DemoRepo.git。我们只需要运行这个指令：
+```c
+pod repo add DemoRepo https://demo/DemoRepo.git
+```
+完成以后，你到路径下面验证一下是否成功：
+```c
+cd ~/.cocoapods/repos/DemoRepo
+pod repo lint .
+```
+这样我们就创建了自己私有的Pod Repo的，接下来我们创建一个library并且push到我们的私有repo。
+
+### 创建自己的Pod lib
+创建自己的library只需要运行pod的一个命令
+```c
+pod lib create DemoLib
+```
+运行以后会有一系列的问题，都填写完毕以后就是一个可用的库了。这里注意一下，在运行命令之前先把Cocopods升级到最新版避免不必要的问题。
+开发完我们修改一下必要配置就可以将其上传到我们的私有Repo了。上传前我们需要验证一下lib是否符合规范标准：
+```c
+pod lib lint
+```
+完成验证，上传我们只需要运行这个命令：
+```c
+ pod repo push DemoRepo DemoLib.podspec
+```
+到这里我们已经做好的私有库使用的所有准备，使用我们需要修改一下Podfile加入我们的私有库source
+```c
+source "https://demo/DemoRepo.git"
+#官方库源保留，以便使用第三方库
+source "https://github.com/CocoaPods/Specs"
+target 'ContactLive' do
+    pod 'DemoLib'
+end
+```
+然后运行pod install，我们的自己创建的library就加入到项目中来了！
+
+之后pod lib的维护，只需要重新发版本打tag走一遍前面的 ```pod repo push DemoRepo DemoLib.po```就行了。
+
+##总结
+这里我讨论了比较常见的Xcode项目依赖管理方式，简单的介绍了一些方案的具体操作。除了石器时代的方法，其它各种方案都有其特点，我们应该根据不同的项目情况灵活的选择项目依赖的管理方式。

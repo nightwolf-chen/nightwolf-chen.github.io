@@ -22,6 +22,51 @@
     </item>
     
     <item>
+      <title>一个横向UITableView实现</title>
+      <link>http://www.jidongchen.com/post/2015-01-31-a-heng-xiang-uitableviewshi-xian/</link>
+      <pubDate>Sat, 31 Jan 2015 21:27:03 +0800</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2015-01-31-a-heng-xiang-uitableviewshi-xian/</guid>
+      <description>完整代码 github完整代码。 UITableView UITableView是UIKit里面常用的类，几乎所有的ios app都离不开这个组件。它提供了一种连续滚动</description>
+    </item>
+    
+    <item>
+      <title>Effective Objective-C(2)</title>
+      <link>http://www.jidongchen.com/post/2014-09-16-effective-objective-c-2/</link>
+      <pubDate>Tue, 16 Sep 2014 23:04:16 +0800</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2014-09-16-effective-objective-c-2/</guid>
+      <description>对象，消息，以及运行时（Runtime） 这一篇，介绍oc于对象，消息和Runtime有关的实践。 理解Properties 类似于java里面的</description>
+    </item>
+    
+    <item>
+      <title>Effective Objective-C (1)</title>
+      <link>http://www.jidongchen.com/post/2014-09-15-effective-objective-c/</link>
+      <pubDate>Mon, 15 Sep 2014 22:17:36 +0800</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2014-09-15-effective-objective-c/</guid>
+      <description>一本好书推荐 最近花了一阵子的时间读了《Effective Objective-C 2.0》这本书，感觉挺不错。我觉得这本书值得每一个OC程序员读一读。它里面从很多个</description>
+    </item>
+    
+    <item>
+      <title>iOS 7 UIImagePicker 黑屏问题</title>
+      <link>http://www.jidongchen.com/post/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti/</link>
+      <pubDate>Thu, 04 Sep 2014 22:19:13 +0800</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti/</guid>
+      <description>前几天一个同事遇到一个很奇怪的bug，就是有时候iOS 7上面的UIImagePicker（也就是照相的那个界面）出现黑屏。具体来说就是在多次</description>
+    </item>
+    
+    <item>
+      <title>自行实现UITabbarController的思路</title>
+      <link>http://www.jidongchen.com/post/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/</link>
+      <pubDate>Tue, 26 Aug 2014 20:18:13 +0800</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/</guid>
+      <description>TabbarController Tabbar这种UI控件很常用，尤其是在手机APP上面。很多APP的主界面都是一个Tabbar来搭建的，在iOS上面苹果提供了UITabB</description>
+    </item>
+    
+    <item>
       <title>What are the qualities of a good programmer</title>
       <link>http://www.jidongchen.com/post/2014-08-21-what-are-the-qualities-of-a-good-programmer/</link>
       <pubDate>Thu, 21 Aug 2014 00:16:00 +0800</pubDate>
@@ -31,84 +76,12 @@
     </item>
     
     <item>
-      <title></title>
+      <title>Blog like a hacker</title>
       <link>http://www.jidongchen.com/post/2014-08-20-blog-like-a-hacker/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 20 Aug 2014 15:12:47 +0800</pubDate>
       
       <guid>http://www.jidongchen.com/post/2014-08-20-blog-like-a-hacker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/2014-09-15-effective-objective-c/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2014-09-15-effective-objective-c/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/2014-09-16-effective-objective-c-2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2014-09-16-effective-objective-c-2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/2015-01-31-a-heng-xiang-uitableviewshi-xian/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2015-01-31-a-heng-xiang-uitableviewshi-xian/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/2016-06-23/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2016-06-23/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/2017-01-19/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2017-01-19/</guid>
-      <description></description>
+      <description>为什么写博客 博客是一种写作行为，写作的基本目的是记录和展现自己的想法。博客和普通的写作又有很大的不同。普通的写作可以随心所欲，怎么写，写什么</description>
     </item>
     
     <item>
@@ -131,56 +104,11 @@
     
     <item>
       <title></title>
-      <link>http://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/2017-05-16-%E8%A7%86%E9%A2%91yuv420%E6%B8%B2%E6%9F%93-ios-opengl-es/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2017-05-16-%E8%A7%86%E9%A2%91yuv420%E6%B8%B2%E6%9F%93-ios-opengl-es/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/http2.0%E7%9A%84%E4%BC%98%E5%8A%BF/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/http2.0%E7%9A%84%E4%BC%98%E5%8A%BF/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/ios/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/ios/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>http://www.jidongchen.com/post/%E6%88%90%E4%B8%BA%E5%A5%BD%E7%94%B7%E5%8F%8B%E7%9A%8415%E4%B8%AA%E5%BB%BA%E8%AE%AE/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.jidongchen.com/post/%E6%88%90%E4%B8%BA%E5%A5%BD%E7%94%B7%E5%8F%8B%E7%9A%8415%E4%B8%AA%E5%BB%BA%E8%AE%AE/</guid>
       <description>Title: 成为好男友的15个建议 Date: 2017-12-16 20:45 status: public 微信公众号：浪人漫客 成为好男友的15个建议 就像你希望女友总是支持你一样，她也需要你同样的态度。支持无疑是成</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/%E8%89%BA%E6%9C%AF/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/%E8%89%BA%E6%9C%AF/</guid>
-      <description></description>
     </item>
     
     <item>
