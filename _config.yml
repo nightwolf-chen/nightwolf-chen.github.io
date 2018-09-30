@@ -40,3 +40,5 @@ plugins:
   - Redirect From
   - Analytics
   - GitHub Metadata 
+
+theme: jekyll-theme-slate
