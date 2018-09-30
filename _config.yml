@@ -31,13 +31,13 @@ plugins:
   - jekyll-paginate
   - jekyll-gist
   - jekyll-language-plugin
-  - Feed 
-  - Scholar 
-  - Tagging 
-  - Mentions
-  - Sitemap Generator 
-  - Redirect From
-  - Analytics
-  - GitHub Metadata 
+  - jekyll-feed
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-avatar
+  - jemoji
+  - jekyll-mentions
+  - jekyll-include-cache
 
 theme: jekyll-theme-slate
