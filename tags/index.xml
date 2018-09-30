@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Jidong&#39;s Time - A place to think and write.</title>
+    <link>http://www.jidongchen.com/tags/</link>
+    <description>Recent content in Tags on Jidong&#39;s Time - A place to think and write.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Jidong Chen</copyright>
+    
+	<atom:link href="http://www.jidongchen.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

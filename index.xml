@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jidong&#39;s Time - A place to think and write.</title>
+    <link>http://www.jidongchen.com/</link>
+    <description>Recent content on Jidong&#39;s Time - A place to think and write.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Jidong Chen</copyright>
+    <lastBuildDate>Sun, 30 Sep 2018 16:12:51 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.jidongchen.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>是时候回归Github了</title>
+      <link>http://www.jidongchen.com/post/comming-back-to-github/</link>
+      <pubDate>Sun, 30 Sep 2018 16:12:51 +0800</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/comming-back-to-github/</guid>
+      <description>是时候回到GitHub的怀抱了 又到了折腾的季节，jekyll搞得我蛋疼，Farbox已经让我蛋碎了。 Farbox的垃圾同步机制，没有版本管理</description>
+    </item>
+    
+  </channel>
+</rss>
