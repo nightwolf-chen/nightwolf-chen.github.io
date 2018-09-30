@@ -1,43 +1,5 @@
-# Permalinks
-permalink:           pretty
-
-# Setup
-title:               Jidong's Blog
-tagline:             To find the truth.
-url:                 http://www.jidongchen.com
-paginate:            1
-baseurl:             ""
-
-# Assets
-#
-# We specify the directory for Jekyll so we can use @imports.
-sass:
-  sass_dir:          _sass
-  style:            :compressed
-
-# About/contact
-author:
-  name:              Jidong Chen
-  url:               http://www.jidongchen.com
-  email:             jidongchen93@@gmail.com
-
-# Custom vars
-version:             1.0.0
-github:
-  repo:              https://github.com/poole/poole
-
-# Gems
-plugins:
-  - jekyll-paginate
-  - jekyll-gist
-  - jekyll-language-plugin
-  - jekyll-feed
-  - jekyll-redirect-from
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-avatar
-  - jemoji
-  - jekyll-mentions
-  - jekyll-include-cache
-
+title: Jidong's Blog
+description: A place to think.
+show_downloads: false
+google_analytics: UA-54003335-1
 theme: jekyll-theme-slate
