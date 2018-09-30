@@ -3,3 +3,15 @@ description: A place to think.
 show_downloads: false
 google_analytics: UA-54003335-1
 theme: jekyll-theme-slate
+url: http://www.jidongchen.com
+
+index_pages:
+  posts:
+    title: 所有文章
+    excerpt: 
+    per_page: 20
+    permalink: /
+    layout: default
+
+plugins:
+    - jekyll-menus

@@ -1,5 +1,6 @@
 ---
 layout: default
+menus: header
 ---
 
 ## Welcome to another page
