@@ -2,148 +2,148 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Jidong&#39;s Time - A place to think and write.</title>
-    <link>http://www.jidongchen.com/categories/</link>
+    <link>https://www.jidongchen.com/categories/</link>
     <description>Recent content in Categories on Jidong&#39;s Time - A place to think and write.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Jidong Chen</copyright>
     <lastBuildDate>Sun, 30 Sep 2018 16:12:51 +0800</lastBuildDate>
     
-	<atom:link href="http://www.jidongchen.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.jidongchen.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blog</title>
-      <link>http://www.jidongchen.com/categories/blog/</link>
+      <link>https://www.jidongchen.com/categories/blog/</link>
       <pubDate>Sun, 30 Sep 2018 16:12:51 +0800</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/blog/</guid>
+      <guid>https://www.jidongchen.com/categories/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Bug</title>
-      <link>http://www.jidongchen.com/categories/bug/</link>
+      <link>https://www.jidongchen.com/categories/bug/</link>
       <pubDate>Thu, 04 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/bug/</guid>
+      <guid>https://www.jidongchen.com/categories/bug/</guid>
       <description></description>
     </item>
     
     <item>
       <title>C</title>
-      <link>http://www.jidongchen.com/categories/c/</link>
+      <link>https://www.jidongchen.com/categories/c/</link>
       <pubDate>Thu, 13 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/c/</guid>
+      <guid>https://www.jidongchen.com/categories/c/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Coding</title>
-      <link>http://www.jidongchen.com/categories/coding/</link>
+      <link>https://www.jidongchen.com/categories/coding/</link>
       <pubDate>Thu, 21 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/coding/</guid>
+      <guid>https://www.jidongchen.com/categories/coding/</guid>
       <description></description>
     </item>
     
     <item>
       <title>FFmpeg</title>
-      <link>http://www.jidongchen.com/categories/ffmpeg/</link>
+      <link>https://www.jidongchen.com/categories/ffmpeg/</link>
       <pubDate>Mon, 10 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/ffmpeg/</guid>
+      <guid>https://www.jidongchen.com/categories/ffmpeg/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Facebook</title>
-      <link>http://www.jidongchen.com/categories/facebook/</link>
+      <link>https://www.jidongchen.com/categories/facebook/</link>
       <pubDate>Thu, 19 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/facebook/</guid>
+      <guid>https://www.jidongchen.com/categories/facebook/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Interview</title>
-      <link>http://www.jidongchen.com/categories/interview/</link>
+      <link>https://www.jidongchen.com/categories/interview/</link>
       <pubDate>Thu, 19 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/interview/</guid>
+      <guid>https://www.jidongchen.com/categories/interview/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ios</title>
-      <link>http://www.jidongchen.com/categories/ios/</link>
+      <link>https://www.jidongchen.com/categories/ios/</link>
       <pubDate>Tue, 16 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/ios/</guid>
+      <guid>https://www.jidongchen.com/categories/ios/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Learning</title>
-      <link>http://www.jidongchen.com/categories/learning/</link>
+      <link>https://www.jidongchen.com/categories/learning/</link>
       <pubDate>Thu, 02 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/learning/</guid>
+      <guid>https://www.jidongchen.com/categories/learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Opengl</title>
-      <link>http://www.jidongchen.com/categories/opengl/</link>
+      <link>https://www.jidongchen.com/categories/opengl/</link>
       <pubDate>Tue, 16 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/opengl/</guid>
+      <guid>https://www.jidongchen.com/categories/opengl/</guid>
       <description></description>
     </item>
     
     <item>
       <title>UIImagePicker</title>
-      <link>http://www.jidongchen.com/categories/uiimagepicker/</link>
+      <link>https://www.jidongchen.com/categories/uiimagepicker/</link>
       <pubDate>Thu, 04 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/uiimagepicker/</guid>
+      <guid>https://www.jidongchen.com/categories/uiimagepicker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>UIkit</title>
-      <link>http://www.jidongchen.com/categories/uikit/</link>
+      <link>https://www.jidongchen.com/categories/uikit/</link>
       <pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/uikit/</guid>
+      <guid>https://www.jidongchen.com/categories/uikit/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Xcode</title>
-      <link>http://www.jidongchen.com/categories/xcode/</link>
+      <link>https://www.jidongchen.com/categories/xcode/</link>
       <pubDate>Mon, 17 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/xcode/</guid>
+      <guid>https://www.jidongchen.com/categories/xcode/</guid>
       <description></description>
     </item>
     
     <item>
       <title>哲学</title>
-      <link>http://www.jidongchen.com/categories/%E5%93%B2%E5%AD%A6/</link>
+      <link>https://www.jidongchen.com/categories/%E5%93%B2%E5%AD%A6/</link>
       <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/%E5%93%B2%E5%AD%A6/</guid>
+      <guid>https://www.jidongchen.com/categories/%E5%93%B2%E5%AD%A6/</guid>
       <description></description>
     </item>
     
     <item>
       <title>数据结构</title>
-      <link>http://www.jidongchen.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <link>https://www.jidongchen.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
       <pubDate>Thu, 13 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <guid>https://www.jidongchen.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
       <description></description>
     </item>
     

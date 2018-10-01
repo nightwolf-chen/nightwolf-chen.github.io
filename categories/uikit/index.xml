@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>UIkit on Jidong&#39;s Time - A place to think and write.</title>
-    <link>http://www.jidongchen.com/categories/uikit/</link>
+    <link>https://www.jidongchen.com/categories/uikit/</link>
     <description>Recent content in UIkit on Jidong&#39;s Time - A place to think and write.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Jidong Chen</copyright>
     <lastBuildDate>Tue, 26 Aug 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.jidongchen.com/categories/uikit/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.jidongchen.com/categories/uikit/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>如何实现一个UITabbarController</title>
-      <link>http://www.jidongchen.com/post/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/</link>
+      <link>https://www.jidongchen.com/post/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/</link>
       <pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/post/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/</guid>
+      <guid>https://www.jidongchen.com/post/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/</guid>
       <description>TabbarController Tabbar这种UI控件很常用，尤其是在手机APP上面。很多APP的主界面都是一个Tabbar来搭建的，在iOS上面苹果提供了UITabB</description>
     </item>
     

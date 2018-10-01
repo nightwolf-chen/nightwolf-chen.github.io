@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://www.jidongchen.com/sitemap.xml
+Sitemap: https://www.jidongchen.com/sitemap.xml

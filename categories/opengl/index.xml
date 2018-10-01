@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Opengl on Jidong&#39;s Time - A place to think and write.</title>
-    <link>http://www.jidongchen.com/categories/opengl/</link>
+    <link>https://www.jidongchen.com/categories/opengl/</link>
     <description>Recent content in Opengl on Jidong&#39;s Time - A place to think and write.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Jidong Chen</copyright>
     <lastBuildDate>Tue, 16 May 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.jidongchen.com/categories/opengl/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.jidongchen.com/categories/opengl/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>视频帧YUV420渲染 iOS OpenGL ES</title>
-      <link>http://www.jidongchen.com/post/2017-05-16-%E8%A7%86%E9%A2%91yuv420%E6%B8%B2%E6%9F%93-ios-opengl-es/</link>
+      <link>https://www.jidongchen.com/post/2017-05-16-%E8%A7%86%E9%A2%91yuv420%E6%B8%B2%E6%9F%93-ios-opengl-es/</link>
       <pubDate>Tue, 16 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/post/2017-05-16-%E8%A7%86%E9%A2%91yuv420%E6%B8%B2%E6%9F%93-ios-opengl-es/</guid>
+      <guid>https://www.jidongchen.com/post/2017-05-16-%E8%A7%86%E9%A2%91yuv420%E6%B8%B2%E6%9F%93-ios-opengl-es/</guid>
       <description>在前面一篇播放器原理文章中我主要讨论了一下播放器的主要流程。我在这篇文章中重点谈论一下视频帧的渲染。 YUV420简介 想要渲染YUV我们首先简</description>
     </item>
     

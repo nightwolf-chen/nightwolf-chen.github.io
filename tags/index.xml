@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Jidong&#39;s Time - A place to think and write.</title>
-    <link>http://www.jidongchen.com/tags/</link>
+    <link>https://www.jidongchen.com/tags/</link>
     <description>Recent content in Tags on Jidong&#39;s Time - A place to think and write.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Jidong Chen</copyright>
     <lastBuildDate>Sun, 30 Sep 2018 16:12:51 +0800</lastBuildDate>
     
-	<atom:link href="http://www.jidongchen.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.jidongchen.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blog</title>
-      <link>http://www.jidongchen.com/tags/blog/</link>
+      <link>https://www.jidongchen.com/tags/blog/</link>
       <pubDate>Sun, 30 Sep 2018 16:12:51 +0800</pubDate>
       
-      <guid>http://www.jidongchen.com/tags/blog/</guid>
+      <guid>https://www.jidongchen.com/tags/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Farbox</title>
-      <link>http://www.jidongchen.com/tags/farbox/</link>
+      <link>https://www.jidongchen.com/tags/farbox/</link>
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/tags/farbox/</guid>
+      <guid>https://www.jidongchen.com/tags/farbox/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hacker</title>
-      <link>http://www.jidongchen.com/tags/hacker/</link>
+      <link>https://www.jidongchen.com/tags/hacker/</link>
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/tags/hacker/</guid>
+      <guid>https://www.jidongchen.com/tags/hacker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Jekll</title>
-      <link>http://www.jidongchen.com/tags/jekll/</link>
+      <link>https://www.jidongchen.com/tags/jekll/</link>
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/tags/jekll/</guid>
+      <guid>https://www.jidongchen.com/tags/jekll/</guid>
       <description></description>
     </item>
     

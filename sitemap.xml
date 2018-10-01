@@ -1,345 +1,345 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<?xml-stylesheet type="text/xsl" href="http://www.jidongchen.com/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="https://www.jidongchen.com/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.jidongchen.com/about/</loc>
+    <loc>https://www.jidongchen.com/about/</loc>
     <lastmod>2018-10-01T11:26:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/comming-back-to-github/</loc>
+    <loc>https://www.jidongchen.com/post/comming-back-to-github/</loc>
     <lastmod>2018-09-30T16:12:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-12-16-%E6%88%90%E4%B8%BA%E5%A5%BD%E7%94%B7%E5%8F%8B%E7%9A%8415%E4%B8%AA%E5%BB%BA%E8%AE%AE/</loc>
+    <loc>https://www.jidongchen.com/post/2017-12-16-%E6%88%90%E4%B8%BA%E5%A5%BD%E7%94%B7%E5%8F%8B%E7%9A%8415%E4%B8%AA%E5%BB%BA%E8%AE%AE/</loc>
     <lastmod>2017-12-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-05-16-%E8%A7%86%E9%A2%91yuv420%E6%B8%B2%E6%9F%93-ios-opengl-es/</loc>
+    <loc>https://www.jidongchen.com/post/2017-05-16-%E8%A7%86%E9%A2%91yuv420%E6%B8%B2%E6%9F%93-ios-opengl-es/</loc>
     <lastmod>2017-05-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/</loc>
+    <loc>https://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/</loc>
     <lastmod>2017-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-04-13-%E9%80%9A%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0/</loc>
+    <loc>https://www.jidongchen.com/post/2017-04-13-%E9%80%9A%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0/</loc>
     <lastmod>2017-04-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-04-10-ffmpeg&#43;sdl2.0/</loc>
+    <loc>https://www.jidongchen.com/post/2017-04-10-ffmpeg&#43;sdl2.0/</loc>
     <lastmod>2017-04-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-04-09-json%E6%98%A0%E5%B0%84%E5%BA%93%E5%AE%9E%E7%8E%B0/</loc>
+    <loc>https://www.jidongchen.com/post/2017-04-09-json%E6%98%A0%E5%B0%84%E5%BA%93%E5%AE%9E%E7%8E%B0/</loc>
     <lastmod>2017-04-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-03-04-ios-the-responder-chain/</loc>
+    <loc>https://www.jidongchen.com/post/2017-03-04-ios-the-responder-chain/</loc>
     <lastmod>2017-03-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-03-02-ios/</loc>
+    <loc>https://www.jidongchen.com/post/2017-03-02-ios/</loc>
     <lastmod>2017-03-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-02-27-xcode-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E6%8E%A2%E7%B4%A2/</loc>
+    <loc>https://www.jidongchen.com/post/2017-02-27-xcode-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E6%8E%A2%E7%B4%A2/</loc>
     <lastmod>2017-02-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-02-26-%E5%A6%82%E4%BD%95%E5%8E%BB%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://www.jidongchen.com/post/2017-02-26-%E5%A6%82%E4%BD%95%E5%8E%BB%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2017-02-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-02-12-%E6%B5%85%E8%B0%88nsrunloop/</loc>
+    <loc>https://www.jidongchen.com/post/2017-02-12-%E6%B5%85%E8%B0%88nsrunloop/</loc>
     <lastmod>2017-02-12T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-01-20-model%E4%B8%8Eview%E8%80%A6%E5%90%88%E7%9A%84%E5%9B%B0%E5%A2%83/</loc>
+    <loc>https://www.jidongchen.com/post/2017-01-20-model%E4%B8%8Eview%E8%80%A6%E5%90%88%E7%9A%84%E5%9B%B0%E5%A2%83/</loc>
     <lastmod>2017-01-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-01-19-facebook-ios%E9%9D%A2%E8%AF%95%E4%B8%89-onsite%E7%8E%B0%E5%9C%BA%E9%9D%A2%E8%AF%95/</loc>
+    <loc>https://www.jidongchen.com/post/2017-01-19-facebook-ios%E9%9D%A2%E8%AF%95%E4%B8%89-onsite%E7%8E%B0%E5%9C%BA%E9%9D%A2%E8%AF%95/</loc>
     <lastmod>2017-01-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-01-16-facebook-ios%E9%9D%A2%E8%AF%95%E4%BA%8C%E7%94%B5%E8%AF%9D%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95/</loc>
+    <loc>https://www.jidongchen.com/post/2017-01-16-facebook-ios%E9%9D%A2%E8%AF%95%E4%BA%8C%E7%94%B5%E8%AF%9D%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95/</loc>
     <lastmod>2017-01-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/</loc>
+    <loc>https://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/</loc>
     <lastmod>2017-01-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2017-01-14-facebook-%E9%9D%A2%E8%AF%95%E4%B8%80/</loc>
+    <loc>https://www.jidongchen.com/post/2017-01-14-facebook-%E9%9D%A2%E8%AF%95%E4%B8%80/</loc>
     <lastmod>2017-01-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2016-06-23-%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%8B%A6%E6%97%85/</loc>
+    <loc>https://www.jidongchen.com/post/2016-06-23-%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%8B%A6%E6%97%85/</loc>
     <lastmod>2016-06-23T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2015-01-31-a-heng-xiang-uitableviewshi-xian/</loc>
+    <loc>https://www.jidongchen.com/post/2015-01-31-a-heng-xiang-uitableviewshi-xian/</loc>
     <lastmod>2015-01-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2014-09-16-effective-objective-c-2/</loc>
+    <loc>https://www.jidongchen.com/post/2014-09-16-effective-objective-c-2/</loc>
     <lastmod>2014-09-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2014-09-15-effective-objective-c/</loc>
+    <loc>https://www.jidongchen.com/post/2014-09-15-effective-objective-c/</loc>
     <lastmod>2014-09-15T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti/</loc>
+    <loc>https://www.jidongchen.com/post/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti/</loc>
     <lastmod>2014-09-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/</loc>
+    <loc>https://www.jidongchen.com/post/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/</loc>
     <lastmod>2014-08-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2014-08-21-what-are-the-qualities-of-a-good-programmer/</loc>
+    <loc>https://www.jidongchen.com/post/2014-08-21-what-are-the-qualities-of-a-good-programmer/</loc>
     <lastmod>2014-08-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/2014-08-20-blog-like-a-hacker/</loc>
+    <loc>https://www.jidongchen.com/post/2014-08-20-blog-like-a-hacker/</loc>
     <lastmod>2014-08-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/tags/blog/</loc>
+    <loc>https://www.jidongchen.com/tags/blog/</loc>
     <lastmod>2018-09-30T16:12:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/blog/</loc>
+    <loc>https://www.jidongchen.com/categories/blog/</loc>
     <lastmod>2018-09-30T16:12:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/bug/</loc>
+    <loc>https://www.jidongchen.com/categories/bug/</loc>
     <lastmod>2014-09-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/c/</loc>
+    <loc>https://www.jidongchen.com/categories/c/</loc>
     <lastmod>2017-04-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/</loc>
+    <loc>https://www.jidongchen.com/categories/</loc>
     <lastmod>2018-09-30T16:12:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/coding/</loc>
+    <loc>https://www.jidongchen.com/categories/coding/</loc>
     <lastmod>2014-08-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/ffmpeg/</loc>
+    <loc>https://www.jidongchen.com/categories/ffmpeg/</loc>
     <lastmod>2017-04-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/facebook/</loc>
+    <loc>https://www.jidongchen.com/categories/facebook/</loc>
     <lastmod>2017-01-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/tags/farbox/</loc>
+    <loc>https://www.jidongchen.com/tags/farbox/</loc>
     <lastmod>2014-08-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/tags/hacker/</loc>
+    <loc>https://www.jidongchen.com/tags/hacker/</loc>
     <lastmod>2014-08-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/interview/</loc>
+    <loc>https://www.jidongchen.com/categories/interview/</loc>
     <lastmod>2017-01-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/ios/</loc>
+    <loc>https://www.jidongchen.com/categories/ios/</loc>
     <lastmod>2017-05-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/tags/jekll/</loc>
+    <loc>https://www.jidongchen.com/tags/jekll/</loc>
     <lastmod>2014-08-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/</loc>
+    <loc>https://www.jidongchen.com/</loc>
     <lastmod>2018-10-01T11:26:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/learning/</loc>
+    <loc>https://www.jidongchen.com/categories/learning/</loc>
     <lastmod>2017-03-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/opengl/</loc>
+    <loc>https://www.jidongchen.com/categories/opengl/</loc>
     <lastmod>2017-05-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/post/</loc>
+    <loc>https://www.jidongchen.com/post/</loc>
     <lastmod>2018-09-30T16:12:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/tags/</loc>
+    <loc>https://www.jidongchen.com/tags/</loc>
     <lastmod>2018-09-30T16:12:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/uiimagepicker/</loc>
+    <loc>https://www.jidongchen.com/categories/uiimagepicker/</loc>
     <lastmod>2014-09-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/uikit/</loc>
+    <loc>https://www.jidongchen.com/categories/uikit/</loc>
     <lastmod>2014-08-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/xcode/</loc>
+    <loc>https://www.jidongchen.com/categories/xcode/</loc>
     <lastmod>2017-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/%E5%93%B2%E5%AD%A6/</loc>
+    <loc>https://www.jidongchen.com/categories/%E5%93%B2%E5%AD%A6/</loc>
     <lastmod>2017-12-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://www.jidongchen.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <loc>https://www.jidongchen.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2017-04-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>

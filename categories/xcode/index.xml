@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Xcode on Jidong&#39;s Time - A place to think and write.</title>
-    <link>http://www.jidongchen.com/categories/xcode/</link>
+    <link>https://www.jidongchen.com/categories/xcode/</link>
     <description>Recent content in Xcode on Jidong&#39;s Time - A place to think and write.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Jidong Chen</copyright>
     <lastBuildDate>Mon, 17 Apr 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.jidongchen.com/categories/xcode/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.jidongchen.com/categories/xcode/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Xcode依赖管理讨论与实践</title>
-      <link>http://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/</link>
+      <link>https://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/</link>
       <pubDate>Mon, 17 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/</guid>
+      <guid>https://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/</guid>
       <description>依赖管理是每一个项目都会遇到的问题，在多模块协作的时候尤其重要。 依赖管理方案 管理方式 石器时代:直接将代码加入target一起编译，这样做的唯</description>
     </item>
     

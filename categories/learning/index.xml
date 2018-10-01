@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Learning on Jidong&#39;s Time - A place to think and write.</title>
-    <link>http://www.jidongchen.com/categories/learning/</link>
+    <link>https://www.jidongchen.com/categories/learning/</link>
     <description>Recent content in Learning on Jidong&#39;s Time - A place to think and write.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Jidong Chen</copyright>
     <lastBuildDate>Thu, 02 Mar 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.jidongchen.com/categories/learning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.jidongchen.com/categories/learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>技术含量</title>
-      <link>http://www.jidongchen.com/post/2017-03-02-ios/</link>
+      <link>https://www.jidongchen.com/post/2017-03-02-ios/</link>
       <pubDate>Thu, 02 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/post/2017-03-02-ios/</guid>
+      <guid>https://www.jidongchen.com/post/2017-03-02-ios/</guid>
       <description>技术含量的定义 变得牛逼是大家追求的共同目标，作为程序员怎样才能变得厉害呢？不言而喻，掌握越多技术含量高的技术你就越厉害。但是我们要怎么去定义</description>
     </item>
     
     <item>
       <title>如何去学习</title>
-      <link>http://www.jidongchen.com/post/2017-02-26-%E5%A6%82%E4%BD%95%E5%8E%BB%E5%AD%A6%E4%B9%A0/</link>
+      <link>https://www.jidongchen.com/post/2017-02-26-%E5%A6%82%E4%BD%95%E5%8E%BB%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Sun, 26 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/post/2017-02-26-%E5%A6%82%E4%BD%95%E5%8E%BB%E5%AD%A6%E4%B9%A0/</guid>
+      <guid>https://www.jidongchen.com/post/2017-02-26-%E5%A6%82%E4%BD%95%E5%8E%BB%E5%AD%A6%E4%B9%A0/</guid>
       <description>俗话说活到老学到老，学习伴随着我们的一生。如此重要的事情怎样才能做好呢？ 对学习的一些看法 从学生时代开始我们就不断的学习各种各样的知识。我们发</description>
     </item>
     
     <item>
       <title>2017-01-14 时间与效率的思考</title>
-      <link>http://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/</link>
+      <link>https://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/</link>
       <pubDate>Sat, 14 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/</guid>
+      <guid>https://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/</guid>
       <description>好久没有写博客了，这一转眼已经过去大半年了，感觉自己很忙没有时间更新博客了。 自身时间管理的思考 不得不说在一线城市的生活节奏很快，尤其是开发的</description>
     </item>
     

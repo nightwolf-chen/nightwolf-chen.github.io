@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.37.1" />
 
 
-<link rel="canonical" href="http://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/" />
+<link rel="canonical" href="https://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -52,7 +52,7 @@
 <meta property="og:title" content="2017-01-14 时间与效率的思考" />
 <meta property="og:description" content="好久没有写博客了，这一转眼已经过去大半年了，感觉自己很忙没有时间更新博客了。 自身时间管理的思考 不得不说在一线城市的生活节奏很快，尤其是开发的" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/" />
+<meta property="og:url" content="https://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/" />
 
 
 
@@ -227,11 +227,31 @@
     <span class="item-content">2017-01-14</span>
   </p>
   
-  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content">@Jidong Chen 2018</span>
+  </p>
 </div>
 
     
     
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/wechat-qr-code.png">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/alipay-qr-code.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
 
     <footer class="post-footer">
       
@@ -268,27 +288,25 @@
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div id="comments-gitment"></div>
-  <link rel="stylesheet" href="/lib/gitment/gitment-0.0.3.min.css">
-    <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
+    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
   <script type="text/javascript">
-  const gitment = new Gitment({
+  var gitalk = new Gitalk({
     id: '2017-01-14 00:00:00 \x2b0000 UTC',
     title: '2017-01-14 时间与效率的思考',
-    link: decodeURI(location.href),
-    desc: '好久没有写博客了，这一转眼已经过去大半年了，感觉自己很忙没有时间更新博客了。 自身时间管理的思考 不得不说在一线城市的生活节奏很快，尤其是开发的',
-    owner: 'nightwolf-chen',
+    clientID: '96701fa39ca1c2e4d818',
+    clientSecret: '2f0e4065509c7535190f0f5b8bffa79c602901e5',
     repo: 'nightwolf-chen.github.io',
-    oauth: {
-      client_id: '96701fa39ca1c2e4d818',
-      client_secret: '2f0e4065509c7535190f0f5b8bffa79c602901e5'
-    }
-  })
-  gitment.render('comments-gitment')
+    owner: 'nightwolf-chen',
+    admin: ['nightwolf-chen'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
-
-  
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
 
       </div>
     </main>
@@ -298,7 +316,7 @@
       <a href="mailto:jidongchen93@gmail.com" class="iconfont icon-email" title="email"></a>
       <a href="https://stackoverflow.com/users/6760442/bruce-chen" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
       <a href="https://github.com/nightwolf-chen" class="iconfont icon-github" title="github"></a>
-  <a href="http://www.jidongchen.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  <a href="https://www.jidongchen.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
@@ -337,6 +355,7 @@
 <script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
   <script type="text/javascript">
     window.MathJax = {
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
       showProcessingMessages: false,
       messageStyle: 'none'
     };
