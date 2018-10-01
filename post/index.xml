@@ -13,12 +13,12 @@
     
     
     <item>
-      <title>是时候回归Github了</title>
+      <title>重回Github</title>
       <link>https://www.jidongchen.com/post/comming-back-to-github/</link>
       <pubDate>Sun, 30 Sep 2018 16:12:51 +0800</pubDate>
       
       <guid>https://www.jidongchen.com/post/comming-back-to-github/</guid>
-      <description>是时候回到GitHub的怀抱了 又到了折腾的季节，jekyll搞得我蛋疼，Farbox已经让我蛋碎了。 Farbox的垃圾同步机制，没有版本管理</description>
+      <description>Farbox Bitcron账号欠费被停 最近在翻自己github上面的一些东西时候看到自己博客的连接点开一看，竟然打不开了。之前一直使用Farbox以及</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@
       <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.jidongchen.com/post/2017-12-16-%E6%88%90%E4%B8%BA%E5%A5%BD%E7%94%B7%E5%8F%8B%E7%9A%8415%E4%B8%AA%E5%BB%BA%E8%AE%AE/</guid>
-      <description>成为好男友的15个建议 就像你希望女友总是支持你一样，她也需要你同样的态度。支持无疑是成功的关系中非常重要的组成部分。但是，你怎么确保自己的做</description>
+      <description>成为好男友的15个建议 各位技术哥哥还在未如何让女友开心烦恼吗？这里给出一些建议，希望对你们有所帮助。 就像你希望女友总是支持你一样，她也需要你</description>
     </item>
     
     <item>
@@ -82,6 +82,15 @@
       
       <guid>https://www.jidongchen.com/post/2017-03-04-ios-the-responder-chain/</guid>
       <description>iOS App的事件分发和响应机制是基于Responder Chain模式的。今天我详细的讨论一下iOS里面的Responder Chain。 事件的传</description>
+    </item>
+    
+    <item>
+      <title>周星驰的电影与《西游记》</title>
+      <link>https://www.jidongchen.com/post/%E5%91%A8%E6%98%9F%E9%A9%B0%E7%9A%84%E7%94%B5%E5%BD%B1%E4%B8%8E%E8%A5%BF%E6%B8%B8%E8%AE%B0/</link>
+      <pubDate>Fri, 03 Mar 2017 15:50:15 +0800</pubDate>
+      
+      <guid>https://www.jidongchen.com/post/%E5%91%A8%E6%98%9F%E9%A9%B0%E7%9A%84%E7%94%B5%E5%BD%B1%E4%B8%8E%E8%A5%BF%E6%B8%B8%E8%AE%B0/</guid>
+      <description>读原著的动机 最近周星驰的新电影《西游伏妖骗》正在上映，我在网上看了很多人的讨论。大部分人都在喷这是一部烂片。这激发了我对原著的好奇。四大名著</description>
     </item>
     
     <item>
@@ -171,7 +180,7 @@
       <pubDate>Thu, 23 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.jidongchen.com/post/2016-06-23-%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%8B%A6%E6%97%85/</guid>
-      <description>独立博客的苦旅,不折腾，多关注内容 === 前记 大学的时候维护过一个新浪博客。那个博客可以说是一个学习笔记，大多数都是一些算法编程题目的解法还有代码</description>
+      <description>独立博客的苦旅,不折腾，多关注内容 前记 大学的时候维护过一个新浪博客。那个博客可以说是一个学习笔记，大多数都是一些算法编程题目的解法还有代码，</description>
     </item>
     
     <item>
