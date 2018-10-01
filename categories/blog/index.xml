@@ -21,5 +21,23 @@
       <description>是时候回到GitHub的怀抱了 又到了折腾的季节，jekyll搞得我蛋疼，Farbox已经让我蛋碎了。 Farbox的垃圾同步机制，没有版本管理</description>
     </item>
     
+    <item>
+      <title>独立博客的苦旅</title>
+      <link>http://www.jidongchen.com/post/2016-06-23-%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%8B%A6%E6%97%85/</link>
+      <pubDate>Thu, 23 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2016-06-23-%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%8B%A6%E6%97%85/</guid>
+      <description>独立博客的苦旅,不折腾，多关注内容 === 前记 大学的时候维护过一个新浪博客。那个博客可以说是一个学习笔记，大多数都是一些算法编程题目的解法还有代码</description>
+    </item>
+    
+    <item>
+      <title>Blog like a hacker</title>
+      <link>http://www.jidongchen.com/post/2014-08-20-blog-like-a-hacker/</link>
+      <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2014-08-20-blog-like-a-hacker/</guid>
+      <description>为什么写博客 博客是一种写作行为，写作的基本目的是记录和展现自己的想法。博客和普通的写作又有很大的不同。普通的写作可以随心所欲，怎么写，写什么</description>
+    </item>
+    
   </channel>
 </rss>

@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Jidong Chen</copyright>
-    <lastBuildDate>Sun, 30 Sep 2018 16:12:51 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Oct 2018 11:26:52 +0800</lastBuildDate>
     
 	<atom:link href="http://www.jidongchen.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>About</title>
+      <link>http://www.jidongchen.com/about/</link>
+      <pubDate>Mon, 01 Oct 2018 11:26:52 +0800</pubDate>
+      
+      <guid>http://www.jidongchen.com/about/</guid>
+      <description>关于我 我的职业是软件工程师专注于Mobile开发，目前就职于阿里巴巴集团西溪园区。 这个博客是我沉淀和分享自己想法的地方。除了技术之外我兴趣广</description>
+    </item>
     
     <item>
       <title>是时候回归Github了</title>
@@ -22,9 +31,162 @@
     </item>
     
     <item>
-      <title>一个横向UITableView实现</title>
+      <title>成为好男友的15个建议</title>
+      <link>http://www.jidongchen.com/post/2017-12-16-%E6%88%90%E4%B8%BA%E5%A5%BD%E7%94%B7%E5%8F%8B%E7%9A%8415%E4%B8%AA%E5%BB%BA%E8%AE%AE/</link>
+      <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-12-16-%E6%88%90%E4%B8%BA%E5%A5%BD%E7%94%B7%E5%8F%8B%E7%9A%8415%E4%B8%AA%E5%BB%BA%E8%AE%AE/</guid>
+      <description>成为好男友的15个建议 就像你希望女友总是支持你一样，她也需要你同样的态度。支持无疑是成功的关系中非常重要的组成部分。但是，你怎么确保自己的做</description>
+    </item>
+    
+    <item>
+      <title>视频帧YUV420渲染 iOS OpenGL ES</title>
+      <link>http://www.jidongchen.com/post/2017-05-16-%E8%A7%86%E9%A2%91yuv420%E6%B8%B2%E6%9F%93-ios-opengl-es/</link>
+      <pubDate>Tue, 16 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-05-16-%E8%A7%86%E9%A2%91yuv420%E6%B8%B2%E6%9F%93-ios-opengl-es/</guid>
+      <description>在前面一篇播放器原理文章中我主要讨论了一下播放器的主要流程。我在这篇文章中重点谈论一下视频帧的渲染。 YUV420简介 想要渲染YUV我们首先简</description>
+    </item>
+    
+    <item>
+      <title>Xcode依赖管理讨论与实践</title>
+      <link>http://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/</link>
+      <pubDate>Mon, 17 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/</guid>
+      <description>依赖管理是每一个项目都会遇到的问题，在多模块协作的时候尤其重要。 依赖管理方案 管理方式 石器时代:直接将代码加入target一起编译，这样做的唯</description>
+    </item>
+    
+    <item>
+      <title>用C链表实现通用队列Queue</title>
+      <link>http://www.jidongchen.com/post/2017-04-13-%E9%80%9A%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Thu, 13 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-04-13-%E9%80%9A%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0/</guid>
+      <description>队列是最为常见的的数据结构之一，每个合格的程序员都应该掌握如何实现一个队列，这里我讨论如何实现一个线程安全的可阻塞队列的实现。 完整代码请参考</description>
+    </item>
+    
+    <item>
+      <title>FFmpeg，SDL2.0 C语言跨平台播放器（iOS Demo）</title>
+      <link>http://www.jidongchen.com/post/2017-04-10-ffmpeg&#43;sdl2.0/</link>
+      <pubDate>Mon, 10 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-04-10-ffmpeg&#43;sdl2.0/</guid>
+      <description>最近在做一个视频相关的项目。一开始我们使用开源播放器，遇到不少坑，以至于我要深入去研究一下播放器的原理和实现。我在这个过程中用C实现了一个简</description>
+    </item>
+    
+    <item>
+      <title>实现一个JSON映射库</title>
+      <link>http://www.jidongchen.com/post/2017-04-09-json%E6%98%A0%E5%B0%84%E5%BA%93%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Sun, 09 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-04-09-json%E6%98%A0%E5%B0%84%E5%BA%93%E5%AE%9E%E7%8E%B0/</guid>
+      <description>源码请到GitHub 源码地址 JSON序列化框架是iOS开发的必备代码库，我这里指的序列化是指JSON&amp;lt;-&amp;gt;Models之间的转换</description>
+    </item>
+    
+    <item>
+      <title>iOS The Responder Chain</title>
+      <link>http://www.jidongchen.com/post/2017-03-04-ios-the-responder-chain/</link>
+      <pubDate>Sat, 04 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-03-04-ios-the-responder-chain/</guid>
+      <description>iOS App的事件分发和响应机制是基于Responder Chain模式的。今天我详细的讨论一下iOS里面的Responder Chain。 事件的传</description>
+    </item>
+    
+    <item>
+      <title>技术含量</title>
+      <link>http://www.jidongchen.com/post/2017-03-02-ios/</link>
+      <pubDate>Thu, 02 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-03-02-ios/</guid>
+      <description>技术含量的定义 变得牛逼是大家追求的共同目标，作为程序员怎样才能变得厉害呢？不言而喻，掌握越多技术含量高的技术你就越厉害。但是我们要怎么去定义</description>
+    </item>
+    
+    <item>
+      <title>Xcode 项目结构探索</title>
+      <link>http://www.jidongchen.com/post/2017-02-27-xcode-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E6%8E%A2%E7%B4%A2/</link>
+      <pubDate>Mon, 27 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-02-27-xcode-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E6%8E%A2%E7%B4%A2/</guid>
+      <description>我们在用Xcode开发小项目时比较少去考虑项目整一个目录结构，但项目达到一定规模以后结构将会影响到开发维护的效率。所以我们最好在项目开始的时</description>
+    </item>
+    
+    <item>
+      <title>如何去学习</title>
+      <link>http://www.jidongchen.com/post/2017-02-26-%E5%A6%82%E4%BD%95%E5%8E%BB%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Sun, 26 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-02-26-%E5%A6%82%E4%BD%95%E5%8E%BB%E5%AD%A6%E4%B9%A0/</guid>
+      <description>俗话说活到老学到老，学习伴随着我们的一生。如此重要的事情怎样才能做好呢？ 对学习的一些看法 从学生时代开始我们就不断的学习各种各样的知识。我们发</description>
+    </item>
+    
+    <item>
+      <title>浅谈NSRunloop</title>
+      <link>http://www.jidongchen.com/post/2017-02-12-%E6%B5%85%E8%B0%88nsrunloop/</link>
+      <pubDate>Sun, 12 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-02-12-%E6%B5%85%E8%B0%88nsrunloop/</guid>
+      <description>iOS开发中有一个不起眼却比较重要的概念NSRunLoop。 NSRunLoop的定义和实质 定义 我首先打开NSRunLoop头文件里面是这么写</description>
+    </item>
+    
+    <item>
+      <title>2017-01-20 Model与View耦合的困境</title>
+      <link>http://www.jidongchen.com/post/2017-01-20-model%E4%B8%8Eview%E8%80%A6%E5%90%88%E7%9A%84%E5%9B%B0%E5%A2%83/</link>
+      <pubDate>Fri, 20 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-01-20-model%E4%B8%8Eview%E8%80%A6%E5%90%88%E7%9A%84%E5%9B%B0%E5%A2%83/</guid>
+      <description>iOS最为熟悉的模式莫过于MVC，我们整天都在写ViewController，View，Model。我想谈一谈自己在项目开发过程对于Mode</description>
+    </item>
+    
+    <item>
+      <title>Facebook iOS面试(三) onsite现场面试</title>
+      <link>http://www.jidongchen.com/post/2017-01-19-facebook-ios%E9%9D%A2%E8%AF%95%E4%B8%89-onsite%E7%8E%B0%E5%9C%BA%E9%9D%A2%E8%AF%95/</link>
+      <pubDate>Thu, 19 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-01-19-facebook-ios%E9%9D%A2%E8%AF%95%E4%B8%89-onsite%E7%8E%B0%E5%9C%BA%E9%9D%A2%E8%AF%95/</guid>
+      <description>在顺利通过电话技术面试后，我即将面对的是一系列的onsite现场面试。 现场面试 我参加的这系列Onsite面试一共有四场，我按照我面试的顺序来</description>
+    </item>
+    
+    <item>
+      <title>Facebook iOS面试(二) 电话技术面试</title>
+      <link>http://www.jidongchen.com/post/2017-01-16-facebook-ios%E9%9D%A2%E8%AF%95%E4%BA%8C%E7%94%B5%E8%AF%9D%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95/</link>
+      <pubDate>Mon, 16 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-01-16-facebook-ios%E9%9D%A2%E8%AF%95%E4%BA%8C%E7%94%B5%E8%AF%9D%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95/</guid>
+      <description>经过简短的HR Initial Call后我顺利地进入了FB面试流程的下一步——电话技术面试。 电话技术面试 一般HR会跟你协商电话面试的时间，这里有个小技巧，</description>
+    </item>
+    
+    <item>
+      <title>2017-01-14 时间与效率的思考</title>
+      <link>http://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/</link>
+      <pubDate>Sat, 14 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-01-14-%E6%97%B6%E9%97%B4%E4%B8%8E%E6%95%88%E7%8E%87%E7%9A%84%E6%80%9D%E8%80%83/</guid>
+      <description>好久没有写博客了，这一转眼已经过去大半年了，感觉自己很忙没有时间更新博客了。 自身时间管理的思考 不得不说在一线城市的生活节奏很快，尤其是开发的</description>
+    </item>
+    
+    <item>
+      <title>Facebook iOS面试(一)简历与HR电面</title>
+      <link>http://www.jidongchen.com/post/2017-01-14-facebook-%E9%9D%A2%E8%AF%95%E4%B8%80/</link>
+      <pubDate>Sat, 14 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-01-14-facebook-%E9%9D%A2%E8%AF%95%E4%B8%80/</guid>
+      <description>朋友的信息 有一天朋友在微信上面发了一条信息给我。信息主要内容是说Facebook一月份会专门来北京现场面试招mobile工程师，要求至少两年</description>
+    </item>
+    
+    <item>
+      <title>独立博客的苦旅</title>
+      <link>http://www.jidongchen.com/post/2016-06-23-%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%8B%A6%E6%97%85/</link>
+      <pubDate>Thu, 23 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2016-06-23-%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%8B%A6%E6%97%85/</guid>
+      <description>独立博客的苦旅,不折腾，多关注内容 === 前记 大学的时候维护过一个新浪博客。那个博客可以说是一个学习笔记，大多数都是一些算法编程题目的解法还有代码</description>
+    </item>
+    
+    <item>
+      <title>一个横向UITableView的实现</title>
       <link>http://www.jidongchen.com/post/2015-01-31-a-heng-xiang-uitableviewshi-xian/</link>
-      <pubDate>Sat, 31 Jan 2015 21:27:03 +0800</pubDate>
+      <pubDate>Sat, 31 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>http://www.jidongchen.com/post/2015-01-31-a-heng-xiang-uitableviewshi-xian/</guid>
       <description>完整代码 github完整代码。 UITableView UITableView是UIKit里面常用的类，几乎所有的ios app都离不开这个组件。它提供了一种连续滚动</description>
@@ -33,7 +195,7 @@
     <item>
       <title>Effective Objective-C(2)</title>
       <link>http://www.jidongchen.com/post/2014-09-16-effective-objective-c-2/</link>
-      <pubDate>Tue, 16 Sep 2014 23:04:16 +0800</pubDate>
+      <pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>http://www.jidongchen.com/post/2014-09-16-effective-objective-c-2/</guid>
       <description>对象，消息，以及运行时（Runtime） 这一篇，介绍oc于对象，消息和Runtime有关的实践。 理解Properties 类似于java里面的</description>
@@ -42,7 +204,7 @@
     <item>
       <title>Effective Objective-C (1)</title>
       <link>http://www.jidongchen.com/post/2014-09-15-effective-objective-c/</link>
-      <pubDate>Mon, 15 Sep 2014 22:17:36 +0800</pubDate>
+      <pubDate>Mon, 15 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>http://www.jidongchen.com/post/2014-09-15-effective-objective-c/</guid>
       <description>一本好书推荐 最近花了一阵子的时间读了《Effective Objective-C 2.0》这本书，感觉挺不错。我觉得这本书值得每一个OC程序员读一读。它里面从很多个</description>
@@ -51,16 +213,16 @@
     <item>
       <title>iOS 7 UIImagePicker 黑屏问题</title>
       <link>http://www.jidongchen.com/post/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti/</link>
-      <pubDate>Thu, 04 Sep 2014 22:19:13 +0800</pubDate>
+      <pubDate>Thu, 04 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>http://www.jidongchen.com/post/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti/</guid>
       <description>前几天一个同事遇到一个很奇怪的bug，就是有时候iOS 7上面的UIImagePicker（也就是照相的那个界面）出现黑屏。具体来说就是在多次</description>
     </item>
     
     <item>
-      <title>自行实现UITabbarController的思路</title>
+      <title>如何实现一个UITabbarController</title>
       <link>http://www.jidongchen.com/post/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/</link>
-      <pubDate>Tue, 26 Aug 2014 20:18:13 +0800</pubDate>
+      <pubDate>Tue, 26 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>http://www.jidongchen.com/post/2014-08-26-zi-xing-shi-xian-uitabbarcontrollerde-si-lu/</guid>
       <description>TabbarController Tabbar这种UI控件很常用，尤其是在手机APP上面。很多APP的主界面都是一个Tabbar来搭建的，在iOS上面苹果提供了UITabB</description>
@@ -69,7 +231,7 @@
     <item>
       <title>What are the qualities of a good programmer</title>
       <link>http://www.jidongchen.com/post/2014-08-21-what-are-the-qualities-of-a-good-programmer/</link>
-      <pubDate>Thu, 21 Aug 2014 00:16:00 +0800</pubDate>
+      <pubDate>Thu, 21 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>http://www.jidongchen.com/post/2014-08-21-what-are-the-qualities-of-a-good-programmer/</guid>
       <description>什么是好的程序员 我们经常会崇拜一些厉害的程序员，也就是我们通常所说的大神，比如说C语言之父，C++之父，linux之父啥的。这些都是公认Go</description>
@@ -78,91 +240,10 @@
     <item>
       <title>Blog like a hacker</title>
       <link>http://www.jidongchen.com/post/2014-08-20-blog-like-a-hacker/</link>
-      <pubDate>Wed, 20 Aug 2014 15:12:47 +0800</pubDate>
+      <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>http://www.jidongchen.com/post/2014-08-20-blog-like-a-hacker/</guid>
       <description>为什么写博客 博客是一种写作行为，写作的基本目的是记录和展现自己的想法。博客和普通的写作又有很大的不同。普通的写作可以随心所欲，怎么写，写什么</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/2017-02-27-xcode/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2017-02-27-xcode/</guid>
-      <description>Title: Xcode 项目结构探索 Date: 2017-02-27 15:45 我们在用Xcode开发小项目时比较少去考虑项目整一个目录结构，但项目达到一定规模以后结构将会影响到开发维护的效率。所以</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/2017-03-04-ios-response/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2017-03-04-ios-response/</guid>
-      <description>Title: iOS The Responder Chain Date: 2017-03-04 17:21 iOS App的事件分发和响应机制是基于Responder Chain模式的。今天我详细的讨论一下iOS里面的Responder Ch</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://www.jidongchen.com/post/%E6%88%90%E4%B8%BA%E5%A5%BD%E7%94%B7%E5%8F%8B%E7%9A%8415%E4%B8%AA%E5%BB%BA%E8%AE%AE/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/%E6%88%90%E4%B8%BA%E5%A5%BD%E7%94%B7%E5%8F%8B%E7%9A%8415%E4%B8%AA%E5%BB%BA%E8%AE%AE/</guid>
-      <description>Title: 成为好男友的15个建议 Date: 2017-12-16 20:45 status: public 微信公众号：浪人漫客 成为好男友的15个建议 就像你希望女友总是支持你一样，她也需要你同样的态度。支持无疑是成</description>
-    </item>
-    
-    <item>
-      <title>2017-01-20 Model与View耦合的困境</title>
-      <link>http://www.jidongchen.com/post/2017-01-20-model%E4%B8%8Eview%E8%80%A6%E5%90%88%E7%9A%84%E5%9B%B0%E5%A2%83/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2017-01-20-model%E4%B8%8Eview%E8%80%A6%E5%90%88%E7%9A%84%E5%9B%B0%E5%A2%83/</guid>
-      <description>iOS最为熟悉的模式莫过于MVC，我们整天都在写ViewController，View，Model。我想谈一谈自己在项目开发过程对于Mode</description>
-    </item>
-    
-    <item>
-      <title>FFmpeg，SDL2.0 C语言跨平台播放器（iOS Demo）</title>
-      <link>http://www.jidongchen.com/post/2017-04-10-ffmpeg&#43;sdl2.0/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2017-04-10-ffmpeg&#43;sdl2.0/</guid>
-      <description>最近在做一个视频相关的项目。一开始我们使用开源播放器，遇到不少坑，以至于我要深入去研究一下播放器的原理和实现。我在这个过程中用C实现了一个简</description>
-    </item>
-    
-    <item>
-      <title>Facebook iOS面试(一)简历与HR电面</title>
-      <link>http://www.jidongchen.com/post/2017-01-14-facebook-%E9%9D%A2%E8%AF%95%E4%B8%80/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2017-01-14-facebook-%E9%9D%A2%E8%AF%95%E4%B8%80/</guid>
-      <description>##朋友的信息 有一天朋友在微信上面发了一条信息给我。信息主要内容是说Facebook一月份会专门来北京现场面试招mobile工程师，要求至少</description>
-    </item>
-    
-    <item>
-      <title>Facebook iOS面试(二) 电话技术面试</title>
-      <link>http://www.jidongchen.com/post/2017-01-16-facebook-ios%E9%9D%A2%E8%AF%95%E4%BA%8C%E7%94%B5%E8%AF%9D%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2017-01-16-facebook-ios%E9%9D%A2%E8%AF%95%E4%BA%8C%E7%94%B5%E8%AF%9D%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95/</guid>
-      <description>经过简短的HR Initial Call后我顺利地进入了FB面试流程的下一步——电话技术面试。 ##电话技术面试 一般HR会跟你协商电话面试的时间，这里有个小技</description>
-    </item>
-    
-    <item>
-      <title>如何去学习</title>
-      <link>http://www.jidongchen.com/post/2017-02-26-%E5%A6%82%E4%BD%95%E5%8E%BB%E5%AD%A6%E4%B9%A0/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2017-02-26-%E5%A6%82%E4%BD%95%E5%8E%BB%E5%AD%A6%E4%B9%A0/</guid>
-      <description>俗话说活到老学到老，学习伴随着我们的一生。如此重要的事情怎样才能做好呢？ 对学习的一些看法 从学生时代开始我们就不断的学习各种各样的知识。我们发</description>
-    </item>
-    
-    <item>
-      <title>用C链表实现通用队列Queue</title>
-      <link>http://www.jidongchen.com/post/2017-04-13-%E9%80%9A%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jidongchen.com/post/2017-04-13-%E9%80%9A%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0/</guid>
-      <description>队列是最为常见的的数据结构之一，每个合格的程序员都应该掌握如何实现一个队列，这里我讨论如何实现一个线程安全的可阻塞队列的实现。 完整代码请参考</description>
     </item>
     
   </channel>

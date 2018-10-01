@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FFmpeg on Jidong&#39;s Time - A place to think and write.</title>
+    <link>http://www.jidongchen.com/categories/ffmpeg/</link>
+    <description>Recent content in FFmpeg on Jidong&#39;s Time - A place to think and write.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Jidong Chen</copyright>
+    <lastBuildDate>Mon, 10 Apr 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.jidongchen.com/categories/ffmpeg/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>FFmpeg，SDL2.0 C语言跨平台播放器（iOS Demo）</title>
+      <link>http://www.jidongchen.com/post/2017-04-10-ffmpeg&#43;sdl2.0/</link>
+      <pubDate>Mon, 10 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2017-04-10-ffmpeg&#43;sdl2.0/</guid>
+      <description>最近在做一个视频相关的项目。一开始我们使用开源播放器，遇到不少坑，以至于我要深入去研究一下播放器的原理和实现。我在这个过程中用C实现了一个简</description>
+    </item>
+    
+  </channel>
+</rss>

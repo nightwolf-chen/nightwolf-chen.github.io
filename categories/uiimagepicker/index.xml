@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UIImagePicker on Jidong&#39;s Time - A place to think and write.</title>
+    <link>http://www.jidongchen.com/categories/uiimagepicker/</link>
+    <description>Recent content in UIImagePicker on Jidong&#39;s Time - A place to think and write.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Jidong Chen</copyright>
+    <lastBuildDate>Thu, 04 Sep 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.jidongchen.com/categories/uiimagepicker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>iOS 7 UIImagePicker 黑屏问题</title>
+      <link>http://www.jidongchen.com/post/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti/</link>
+      <pubDate>Thu, 04 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2014-09-04-ios-7-uiimagepickercontroller-hei-ping-wen-ti/</guid>
+      <description>前几天一个同事遇到一个很奇怪的bug，就是有时候iOS 7上面的UIImagePicker（也就是照相的那个界面）出现黑屏。具体来说就是在多次</description>
+    </item>
+    
+  </channel>
+</rss>

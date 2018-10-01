@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Xcode依赖管理讨论与实践 - Jidong&#39;s Time - A place to think and write.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Jidong Chen" />
+  <meta name="description" content="依赖管理是每一个项目都会遇到的问题，在多模块协作的时候尤其重要。 依赖管理方案 管理方式 石器时代:直接将代码加入target一起编译，这样做的唯" />
+
+  <meta name="keywords" content="Jidong, blog, code" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link rel="canonical" href="http://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Xcode依赖管理讨论与实践" />
+<meta property="og:description" content="依赖管理是每一个项目都会遇到的问题，在多模块协作的时候尤其重要。 依赖管理方案 管理方式 石器时代:直接将代码加入target一起编译，这样做的唯" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/" />
+
+
+
+<meta property="article:published_time" content="2017-04-17T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2017-04-17T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Xcode依赖管理讨论与实践">
+<meta itemprop="description" content="依赖管理是每一个项目都会遇到的问题，在多模块协作的时候尤其重要。 依赖管理方案 管理方式 石器时代:直接将代码加入target一起编译，这样做的唯">
+
+
+<meta itemprop="datePublished" content="2017-04-17T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-04-17T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1911">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Xcode依赖管理讨论与实践"/>
+<meta name="twitter:description" content="依赖管理是每一个项目都会遇到的问题，在多模块协作的时候尤其重要。 依赖管理方案 管理方式 石器时代:直接将代码加入target一起编译，这样做的唯"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Jidong&#39;s Time</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Jidong&#39;s Time</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">About</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Xcode依赖管理讨论与实践</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-04-17 </span>
+        <div class="post-category">
+            
+              <a href="/categories/ios/"> ios </a>
+            
+              <a href="/categories/xcode/"> xcode </a>
+            
+          </div>
+        <span class="more-meta"> 约 1911 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#依赖管理方案">依赖管理方案</a></li>
+<li><a href="#方案的选择">方案的选择</a>
+<ul>
+<li><a href="#小型项目">小型项目</a></li>
+<li><a href="#多人协作项目">多人协作项目</a>
+<ul>
+<li><a href="#submodule-subproject">Submodule &amp; Subproject</a></li>
+<li><a href="#cocopods私有库">Cocopods私有库</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#submodule-subproject集成方式简介">Submodule &amp; Subproject集成方式简介</a></li>
+<li><a href="#cocopod-私有库简介">Cocopod 私有库简介</a>
+<ul>
+<li><a href="#创建私有sepc-repo">创建私有Sepc Repo</a></li>
+<li><a href="#创建自己的pod-lib">创建自己的Pod lib</a></li>
+</ul></li>
+<li><a href="#总结">总结</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<p>依赖管理是每一个项目都会遇到的问题，在多模块协作的时候尤其重要。</p>
+
+<h2 id="依赖管理方案">依赖管理方案</h2>
+
+<table>
+<thead>
+<tr>
+<th>管理方式</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>石器时代</strong>:直接将代码加入target一起编译，这样做的唯一好处就是简单直接。</td>
+</tr>
+
+<tr>
+<td><strong>子项目</strong>:将依赖模块以子项目的形式加入到项目中，这种方法可以说是xcode官方提供的一种依赖支持，没啥大问题，就是需要手动操作。</td>
+</tr>
+
+<tr>
+<td><strong>子项目 + submodule</strong>:子项目成独立一个git库，然后通过子项目的形式添加到依赖的项目里。这种方式比单纯的子项目形式又更进一步。</td>
+</tr>
+
+<tr>
+<td><strong>Cocoapods</strong>：iOS必备工具，开源神器，最大的优势就是方便而且优雅。现在大家比较诟病的主要是中心化（在中国更新master更是让人蛋疼），还有就是侵入性的集成方式（会修改原项目的一些配置）。</td>
+</tr>
+
+<tr>
+<td><strong>Carthage</strong>：去中心化的设计是亮点，它只会帮你下载编译依赖，而把集成交给你。用法跟cocoapods类似。</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="方案的选择">方案的选择</h2>
+
+<h3 id="小型项目">小型项目</h3>
+
+<p>对于个人项目或者说小项目而言，选择哪种方式去管理依赖并不是那么重要。我的观点是对于小项目使用Cocopods，它能满足你所有的需求，而且操作足够简单，自己只需要维护一个Podfile就行了也不用考虑协作的问题。</p>
+
+<h3 id="多人协作项目">多人协作项目</h3>
+
+<p>当项目发展到一定规模以后模块化将成为趋势，这个时候依赖管理的方式选择会直接影响开发效率。对于这种多模块共同开发协作的情况可以考虑“submodule+subproject”或者Cocoapods私有库的形式。我们来看看这两种方式的优势和不足。</p>
+
+<h4 id="submodule-subproject">Submodule &amp; Subproject</h4>
+
+<ul>
+<li>代码库分离</li>
+<li>代码同步高效</li>
+<li>使用简单，无需额外工具</li>
+<li>学习成本低</li>
+</ul>
+
+<h4 id="cocopods私有库">Cocopods私有库</h4>
+
+<ul>
+<li>代码库分离</li>
+<li>代码更新稍显复杂</li>
+<li>集成方便，多模块高效集成</li>
+<li>管理方式规范化</li>
+<li>开源代码支持</li>
+<li>学习成本稍高</li>
+</ul>
+
+<p>对比来看我们可以看到Cocoapods在项目达到一定规模的时候有显著的优势，尤其是模块较多的情况。但是如果你只有一个模块需要协同开发，submodule的方式也是很好的。毕竟搭建Pod私有库包括维护自己的Pod库都要走一套固定的流程，如果不是模块较多手动维护比较费力的时候，submodule是我首先考虑的方案。</p>
+
+<p>另外carthage+静态库的方式也是一个不错的选择，跟Pod类似，不过我没有实际使用过保留我的意见。</p>
+
+<h2 id="submodule-subproject集成方式简介">Submodule &amp; Subproject集成方式简介</h2>
+
+<ol>
+<li>新建一个静态库项目DemoModule。</li>
+<li>把模块相关代码加到静态库项目，编译通过。</li>
+<li>将DemoModule push到git服务器（GitHub或者私有Gitlab）。</li>
+<li>在主项目Demo中用git submodule add 命令引入DemoModule，然后把DemoModule项目拖到主项目Demo中。</li>
+<li>配置Target dependency，Link with library，<strong>配置头文件搜索路径</strong>（Header search path）。</li>
+<li>新clone的项目需要先初始化子模块
+<code>c
+git submodule init
+git submodule update
+</code>
+这样你完成了一个submodule的子项目引用集成了。</li>
+</ol>
+
+<h2 id="cocopod-私有库简介">Cocopod 私有库简介</h2>
+
+<p>创建私有Pod库我们要分两步：
+1. 创建私有Spec Repo，这里我取名为DemoRepo
+2. 创建Pod lib,这里我命名为DemoLib然后推送到DemoRepo。</p>
+
+<h3 id="创建私有sepc-repo">创建私有Sepc Repo</h3>
+
+<p>这个过程比较简单，你只需要一个私有的git库就行了，它可以是公开的或者私有的。如果只是管理自己私有的东西，一开始为空就行了，不一定要fork官方的Spec Repo。
+比如说我们的git库的地址为:<a href="https://demo/DemoRepo.git。我们只需要运行这个指令：">https://demo/DemoRepo.git。我们只需要运行这个指令：</a></p>
+
+<pre><code class="language-c">pod repo add DemoRepo https://demo/DemoRepo.git
+</code></pre>
+
+<p>完成以后，你到路径下面验证一下是否成功：</p>
+
+<pre><code class="language-c">cd ~/.cocoapods/repos/DemoRepo
+pod repo lint .
+</code></pre>
+
+<p>这样我们就创建了自己私有的Pod Repo的，接下来我们创建一个library并且push到我们的私有repo。</p>
+
+<h3 id="创建自己的pod-lib">创建自己的Pod lib</h3>
+
+<p>创建自己的library只需要运行pod的一个命令</p>
+
+<pre><code class="language-c">pod lib create DemoLib
+</code></pre>
+
+<p>运行以后会有一系列的问题，都填写完毕以后就是一个可用的库了。这里注意一下，在运行命令之前先把Cocopods升级到最新版避免不必要的问题。
+开发完我们修改一下必要配置就可以将其上传到我们的私有Repo了。上传前我们需要验证一下lib是否符合规范标准：</p>
+
+<pre><code class="language-c">pod lib lint
+</code></pre>
+
+<p>完成验证，上传我们只需要运行这个命令：</p>
+
+<pre><code class="language-c"> pod repo push DemoRepo DemoLib.podspec
+</code></pre>
+
+<p>到这里我们已经做好的私有库使用的所有准备，使用我们需要修改一下Podfile加入我们的私有库source</p>
+
+<pre><code class="language-c">source &quot;https://demo/DemoRepo.git&quot;
+#官方库源保留，以便使用第三方库
+source &quot;https://github.com/CocoaPods/Specs&quot;
+target 'ContactLive' do
+    pod 'DemoLib'
+end
+</code></pre>
+
+<p>然后运行pod install，我们的自己创建的library就加入到项目中来了！</p>
+
+<p>之后pod lib的维护，只需要重新发版本打tag走一遍前面的 <code>pod repo push DemoRepo DemoLib.po</code>就行了。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>这里我讨论了比较常见的Xcode项目依赖管理方式，简单的介绍了一些方案的具体操作。除了石器时代的方法，其它各种方案都有其特点，我们应该根据不同的项目情况灵活的选择项目依赖的管理方式。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Jidong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2017-04-17</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/2017-05-16-%E8%A7%86%E9%A2%91yuv420%E6%B8%B2%E6%9F%93-ios-opengl-es/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">视频帧YUV420渲染 iOS OpenGL ES</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/2017-04-13-%E9%80%9A%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0/">
+            <span class="next-text nav-default">用C链表实现通用队列Queue</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'jidongchen';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div id="comments-gitment"></div>
+  <link rel="stylesheet" href="/lib/gitment/gitment-0.0.3.min.css">
+    <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
+  <script type="text/javascript">
+  const gitment = new Gitment({
+    id: '2017-04-17 00:00:00 \x2b0000 UTC',
+    title: 'Xcode依赖管理讨论与实践',
+    link: decodeURI(location.href),
+    desc: '依赖管理是每一个项目都会遇到的问题，在多模块协作的时候尤其重要。 依赖管理方案 管理方式 石器时代:直接将代码加入target一起编译，这样做的唯',
+    owner: 'nightwolf-chen',
+    repo: 'nightwolf-chen.github.io',
+    oauth: {
+      client_id: '96701fa39ca1c2e4d818',
+      client_secret: '2f0e4065509c7535190f0f5b8bffa79c602901e5'
+    }
+  })
+  gitment.render('comments-gitment')
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jidongchen93@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/6760442/bruce-chen" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://github.com/nightwolf-chen" class="iconfont icon-github" title="github"></a>
+  <a href="http://www.jidongchen.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Jidong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-54003335-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

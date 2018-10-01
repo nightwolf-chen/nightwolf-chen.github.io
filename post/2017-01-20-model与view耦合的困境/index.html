@@ -56,8 +56,9 @@
 
 
 
+<meta property="article:published_time" content="2017-01-20T00:00:00&#43;00:00"/>
 
-
+<meta property="article:modified_time" content="2017-01-20T00:00:00&#43;00:00"/>
 
 
 
@@ -73,8 +74,9 @@
 <meta itemprop="description" content="iOS最为熟悉的模式莫过于MVC，我们整天都在写ViewController，View，Model。我想谈一谈自己在项目开发过程对于Mode">
 
 
-
-<meta itemprop="wordCount" content="1987">
+<meta itemprop="datePublished" content="2017-01-20T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-01-20T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1985">
 
 
 
@@ -110,8 +112,8 @@
         <li class="mobile-menu-item">Home</li>
       </a><a href="/post/">
         <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">About</li>
       </a><a href="/categories/">
         <li class="mobile-menu-item">Categories</li>
       </a>
@@ -130,7 +132,7 @@
       </li><li class="menu-item">
         <a class="menu-item-link" href="/post/">Archives</a>
       </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
+        <a class="menu-item-link" href="/about">About</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">Categories</a>
       </li>
@@ -147,9 +149,13 @@
       <h1 class="post-title">2017-01-20 Model与View耦合的困境</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 0001-01-01 </span>
-        
-        <span class="more-meta"> 约 1987 字 </span>
+        <span class="post-time"> 2017-01-20 </span>
+        <div class="post-category">
+            
+              <a href="/categories/ios/"> ios </a>
+            
+          </div>
+        <span class="more-meta"> 约 1985 字 </span>
         <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -169,6 +175,7 @@
 <li><a href="#view与model的耦合">View与Model的耦合</a></li>
 <li><a href="#解耦的尝试">解耦的尝试</a></li>
 <li><a href="#mvvm">MVVM</a></li>
+<li><a href="#总结">总结</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -276,8 +283,9 @@ UserInfoImp -&gt; 实现UserInfo
 
 <p>利用这种结构，我前面提到的问题都可以迎刃而解。当更改View的我们只需要改动ViewModel，至于ViewModel里面有什么View不关心，这样给了我们很多灵活性。在MVVM里面UIView/UIViewController都算是View这一层，ViewModel负责View的渲染和各种业务逻辑，这同时也做到了ViewController的瘦身。 MVVM的好处有很多，我这里不展开讨论了。</p>
 
-<p>##总结
-View与Model的紧耦合给我们开发带来了很多困扰，我相信MVVM是一种很好的解耦模式。当View和Model不再耦合，一切都变得开朗了起来，不得不说设计在项目越来越复杂的时候变得非常重要。有时间还是要多总结。</p>
+<h2 id="总结">总结</h2>
+
+<p>View与Model的紧耦合给我们开发带来了很多困扰，我相信MVVM是一种很好的解耦模式。当View和Model不再耦合，一切都变得开朗了起来，不得不说设计在项目越来越复杂的时候变得非常重要。有时间还是要多总结。</p>
 
     </div>
 
@@ -289,7 +297,7 @@ View与Model的紧耦合给我们开发带来了很多困扰，我相信MVVM是�
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">0001-01-01</span>
+    <span class="item-content">2017-01-20</span>
   </p>
   
   
@@ -304,14 +312,14 @@ View与Model的紧耦合给我们开发带来了很多困扰，我相信MVVM是�
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/%E6%88%90%E4%B8%BA%E5%A5%BD%E7%94%B7%E5%8F%8B%E7%9A%8415%E4%B8%AA%E5%BB%BA%E8%AE%AE/">
+          <a class="prev" href="/post/2017-02-12-%E6%B5%85%E8%B0%88nsrunloop/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default"></span>
+            <span class="prev-text nav-default">浅谈NSRunloop</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
-          <a class="next" href="/post/2017-04-10-ffmpeg&#43;sdl2.0/">
-            <span class="next-text nav-default">FFmpeg，SDL2.0 C语言跨平台播放器（iOS Demo）</span>
+          <a class="next" href="/post/2017-01-19-facebook-ios%E9%9D%A2%E8%AF%95%E4%B8%89-onsite%E7%8E%B0%E5%9C%BA%E9%9D%A2%E8%AF%95/">
+            <span class="next-text nav-default">Facebook iOS面试(三) onsite现场面试</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -338,7 +346,7 @@ View与Model的紧耦合给我们开发带来了很多困扰，我相信MVVM是�
     <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
   <script type="text/javascript">
   const gitment = new Gitment({
-    id: '0001-01-01 00:00:00 \x2b0000 UTC',
+    id: '2017-01-20 00:00:00 \x2b0000 UTC',
     title: '2017-01-20 Model与View耦合的困境',
     link: decodeURI(location.href),
     desc: 'iOS最为熟悉的模式莫过于MVC，我们整天都在写ViewController，View，Model。我想谈一谈自己在项目开发过程对于Mode',
@@ -360,7 +368,7 @@ View与Model的紧耦合给我们开发带来了很多困扰，我相信MVVM是�
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="jidongchen93@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="mailto:jidongchen93@gmail.com" class="iconfont icon-email" title="email"></a>
       <a href="https://stackoverflow.com/users/6760442/bruce-chen" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
       <a href="https://github.com/nightwolf-chen" class="iconfont icon-github" title="github"></a>
   <a href="http://www.jidongchen.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>

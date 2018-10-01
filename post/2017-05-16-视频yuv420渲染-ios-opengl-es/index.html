@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>视频帧YUV420渲染 iOS OpenGL ES - Jidong&#39;s Time - A place to think and write.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Jidong Chen" />
+  <meta name="description" content="在前面一篇播放器原理文章中我主要讨论了一下播放器的主要流程。我在这篇文章中重点谈论一下视频帧的渲染。 YUV420简介 想要渲染YUV我们首先简" />
+
+  <meta name="keywords" content="Jidong, blog, code" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link rel="canonical" href="http://www.jidongchen.com/post/2017-05-16-%E8%A7%86%E9%A2%91yuv420%E6%B8%B2%E6%9F%93-ios-opengl-es/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="视频帧YUV420渲染 iOS OpenGL ES" />
+<meta property="og:description" content="在前面一篇播放器原理文章中我主要讨论了一下播放器的主要流程。我在这篇文章中重点谈论一下视频帧的渲染。 YUV420简介 想要渲染YUV我们首先简" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.jidongchen.com/post/2017-05-16-%E8%A7%86%E9%A2%91yuv420%E6%B8%B2%E6%9F%93-ios-opengl-es/" />
+
+
+
+<meta property="article:published_time" content="2017-05-16T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2017-05-16T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="视频帧YUV420渲染 iOS OpenGL ES">
+<meta itemprop="description" content="在前面一篇播放器原理文章中我主要讨论了一下播放器的主要流程。我在这篇文章中重点谈论一下视频帧的渲染。 YUV420简介 想要渲染YUV我们首先简">
+
+
+<meta itemprop="datePublished" content="2017-05-16T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-05-16T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1594">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="视频帧YUV420渲染 iOS OpenGL ES"/>
+<meta name="twitter:description" content="在前面一篇播放器原理文章中我主要讨论了一下播放器的主要流程。我在这篇文章中重点谈论一下视频帧的渲染。 YUV420简介 想要渲染YUV我们首先简"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Jidong&#39;s Time</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Jidong&#39;s Time</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">About</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">视频帧YUV420渲染 iOS OpenGL ES</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-05-16 </span>
+        <div class="post-category">
+            
+              <a href="/categories/ios/"> ios </a>
+            
+              <a href="/categories/opengl/"> opengl </a>
+            
+          </div>
+        <span class="more-meta"> 约 1594 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#yuv420简介">YUV420简介</a>
+<ul>
+<li><a href="#yuv是一种颜色编码方式">YUV是一种颜色编码方式</a></li>
+<li><a href="#yuv的存储方式">YUV的存储方式</a></li>
+<li><a href="#yuv的历史原因">YUV的历史原因</a></li>
+<li><a href="#yuv与rgb的转换">YUV与RGB的转换</a></li>
+</ul></li>
+<li><a href="#yuv的渲染">YUV的渲染</a>
+<ul>
+<li><a href="#利用opengl-shader做矩阵变换">利用OpenGL shader做矩阵变换</a></li>
+<li><a href="#opengl-yuv-渲染demo">OpenGL YUV 渲染Demo</a></li>
+</ul></li>
+<li><a href="#总结">总结</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<p>在前面一篇<a href="http://www.jidongchen.com/post/2017-04-10-ffmpeg-sdl2.0">播放器原理</a>文章中我主要讨论了一下播放器的主要流程。我在这篇文章中重点谈论一下视频帧的渲染。</p>
+
+<h2 id="yuv420简介">YUV420简介</h2>
+
+<p>想要渲染YUV我们首先简要了解一下YUV这种数据格式。</p>
+
+<h3 id="yuv是一种颜色编码方式">YUV是一种颜色编码方式</h3>
+
+<p>首先我们需要明确的是YUV是一种颜色编码方式，也就是说跟我们熟悉的RGB同样用于编码颜色一种数据格式。彩色图像记录的格式常见的有RGB、YUV、CMYK等。</p>
+
+<h3 id="yuv的存储方式">YUV的存储方式</h3>
+
+<p>我们都知道RGB是按照Red，Green，Blue三原色的色度来表示彩色图像的。但是YUV跟RGB有着比较大的差别，首先YUV中Y（Luma，Luminance）表示灰度值，UV一起表示色度值。
+YUV有两种存储方式：
+* 紧缩格式（packed formats）：将Y、U、V值储存成Macro Pixels阵列，和RGB的存放方式类似。
+* 平面格式（planar formats）：将Y、U、V的三个分量分别存放在不同的矩阵中。
+我的经验里面平面格式比较常见，可能是由于简单易于理解吧。</p>
+
+<h3 id="yuv的历史原因">YUV的历史原因</h3>
+
+<p>YUV产生于黑白电视和彩色电视的过渡时期，使用YUV格式可以兼容黑白电视信号，对于黑白电视只需要使用Y值就够了。更重要的是YUV相对于RGB占用的带宽非常小。
+具体细节可以参看百科：
+<a href="https://zh.wikipedia.org/wiki/YUV">维基百科</a>
+<a href="http://baike.baidu.com/item/YUV">百度百科</a></p>
+
+<h3 id="yuv与rgb的转换">YUV与RGB的转换</h3>
+
+<p>同样为颜色编码YUV和RGB是可以互相转换的，有特定的公式来做这个转换，例如RGB转换YUV：</p>
+
+<pre><code class="language-c">Y = 0.299*R + 0.587*G + 0.114*B
+U = -0.169*R - 0.331*G + 0.5*B + 128
+v = 0.5*R - 0.419*G - 0.081*B + 128 
+</code></pre>
+
+<p>相反的YUV转换RGB：</p>
+
+<pre><code class="language-c">R = Y + 1.13983*(V - 128)
+G = Y - 0.39465 * (U - 128) - 0.58060*(V - 128)
+B = Y + 2.03211*(U - 128)
+</code></pre>
+
+<p>对于线性代数比较熟悉的同学可能已经发现了，这个是一个矩阵变换，也就是矩阵乘法得到的结果。实际上在摄像机和电视里面这个变换是通过专门的硬件电路来实现的。我们也可以通过CPU去做这些运算，不过将会消耗比较大的CPU运算资源。</p>
+
+<h2 id="yuv的渲染">YUV的渲染</h2>
+
+<p>需要特别提一下我这里说的YUV都是特指YUV420。通过对YUV格式的简要了解，我们知道YUV和RGB是可以互相转换的。那么最为直接的方法就是将YUV先转换为RGB然后可以有很多方法将RGB数据渲染到屏幕上面。比如使用OpenGL Texture的方式。然而这种方式最大的问题就是大量的CPU运算造成的性能瓶颈。</p>
+
+<h3 id="利用opengl-shader做矩阵变换">利用OpenGL shader做矩阵变换</h3>
+
+<p>使用这种方法需要了解一些OpenGL的知识。GPU是专门设计成做矩阵运算的硬件，所以我们使用OpenGL提供的接口让GPU去做颜色YUV到RGB的转换，这样可以大大优化性能。而这种方式就是利用OpenGL提供的Shader来做转换运算，大致思路是将YUV的三个分量分别作为Texture上载到GPU，然后在Fragment Shader中取YUV三个分量转换成RBG然后进行显示。OpenGL相关的知识可以参考：<a href="https://learnopengl.com/#!Getting-started/Shaders">OpenGL参考资料</a>。</p>
+
+<h3 id="opengl-yuv-渲染demo">OpenGL YUV 渲染Demo</h3>
+
+<p><a href="https://github.com/nightwolf-chen/JDCFFPlayer">代码github</a></p>
+
+<pre><code class="language-c">git clone https://github.com/nightwolf-chen/JDCFFPlayer
+git checkout opengl_texture
+</code></pre>
+
+<p>里面使用了kxmovie里面实现的GLView进行视频渲染。C实现的播放器被封装在JDCMediaPlayer里面，解码得到AVFrame以后简单转换成kxmovie使用的frame</p>
+
+<pre><code class="language-objc">- (void)render:(JDCAVFrame *)frame
+{
+    CGFloat originWidth = _frameWidth;
+    _frameheight = frame.frameHeight;
+    _frameWidth = frame.frameWidth;
+    if (originWidth == 0) {
+        [self updateVertices];
+        [self kx_render: nil];
+    }
+    [self kx_render:[self handleVideoFrame:frame]];
+}
+</code></pre>
+
+<p>在GLView里面有这样一段代码，去分别为YUV三个分量生成三个不同的Texture</p>
+
+<pre><code class="language-objc">- (void) setFrame: (KxVideoFrame *) frame
+{
+    KxVideoFrameYUV *yuvFrame = (KxVideoFrameYUV *)frame;
+    
+    assert(yuvFrame.luma.length == yuvFrame.width * yuvFrame.height);
+    assert(yuvFrame.chromaB.length == (yuvFrame.width * yuvFrame.height) / 4);
+    assert(yuvFrame.chromaR.length == (yuvFrame.width * yuvFrame.height) / 4);
+
+    const NSUInteger frameWidth = frame.width;
+    const NSUInteger frameHeight = frame.height;    
+    
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    
+    if (0 == _textures[0])
+        glGenTextures(3, _textures);
+
+    const UInt8 *pixels[3] = { yuvFrame.luma.bytes, yuvFrame.chromaB.bytes, yuvFrame.chromaR.bytes };
+    const NSUInteger widths[3]  = { frameWidth, frameWidth / 2, frameWidth / 2 };
+    const NSUInteger heights[3] = { frameHeight, frameHeight / 2, frameHeight / 2 };
+    
+    for (int i = 0; i &lt; 3; ++i) {
+        
+        glBindTexture(GL_TEXTURE_2D, _textures[i]);
+        
+        glTexImage2D(GL_TEXTURE_2D,
+                     0,
+                     GL_LUMINANCE,
+                     widths[i],
+                     heights[i],
+                     0,
+                     GL_LUMINANCE,
+                     GL_UNSIGNED_BYTE,
+                     pixels[i]);
+        
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    }     
+}
+</code></pre>
+
+<p>Fragment Shader拿到YUV分量进行运算最终得到RGB颜色用于着色shader:</p>
+
+<pre><code class="language-c">varying highp vec2 v_texcoord;
+ uniform sampler2D s_texture_y;
+ uniform sampler2D s_texture_u;
+ uniform sampler2D s_texture_v;
+ 
+ void main()
+ {
+     highp float y = texture2D(s_texture_y, v_texcoord).r;
+     highp float u = texture2D(s_texture_u, v_texcoord).r - 0.5;
+     highp float v = texture2D(s_texture_v, v_texcoord).r - 0.5;
+     
+     highp float r = y +             1.402 * v;
+     highp float g = y - 0.344 * u - 0.714 * v;
+     highp float b = y + 1.772 * u;
+     
+     gl_FragColor = vec4(r,g,b,1.0);     
+ }
+</code></pre>
+
+<h2 id="总结">总结</h2>
+
+<p>这篇文章我讨论了YUV颜色格式，并且实现了iOSDemo，代码请见<a href="https://github.com/nightwolf-chen/JDCFFPlayer/tree/opengl_texture">github</a>。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Jidong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2017-05-16</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/2017-12-16-%E6%88%90%E4%B8%BA%E5%A5%BD%E7%94%B7%E5%8F%8B%E7%9A%8415%E4%B8%AA%E5%BB%BA%E8%AE%AE/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">成为好男友的15个建议</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/">
+            <span class="next-text nav-default">Xcode依赖管理讨论与实践</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'jidongchen';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div id="comments-gitment"></div>
+  <link rel="stylesheet" href="/lib/gitment/gitment-0.0.3.min.css">
+    <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
+  <script type="text/javascript">
+  const gitment = new Gitment({
+    id: '2017-05-16 00:00:00 \x2b0000 UTC',
+    title: '视频帧YUV420渲染 iOS OpenGL ES',
+    link: decodeURI(location.href),
+    desc: '在前面一篇播放器原理文章中我主要讨论了一下播放器的主要流程。我在这篇文章中重点谈论一下视频帧的渲染。 YUV420简介 想要渲染YUV我们首先简',
+    owner: 'nightwolf-chen',
+    repo: 'nightwolf-chen.github.io',
+    oauth: {
+      client_id: '96701fa39ca1c2e4d818',
+      client_secret: '2f0e4065509c7535190f0f5b8bffa79c602901e5'
+    }
+  })
+  gitment.render('comments-gitment')
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jidongchen93@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/6760442/bruce-chen" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://github.com/nightwolf-chen" class="iconfont icon-github" title="github"></a>
+  <a href="http://www.jidongchen.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Jidong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-54003335-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

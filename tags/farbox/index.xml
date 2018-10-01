@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Farbox on Jidong&#39;s Time - A place to think and write.</title>
+    <link>http://www.jidongchen.com/tags/farbox/</link>
+    <description>Recent content in Farbox on Jidong&#39;s Time - A place to think and write.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Jidong Chen</copyright>
+    <lastBuildDate>Wed, 20 Aug 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.jidongchen.com/tags/farbox/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blog like a hacker</title>
+      <link>http://www.jidongchen.com/post/2014-08-20-blog-like-a-hacker/</link>
+      <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jidongchen.com/post/2014-08-20-blog-like-a-hacker/</guid>
+      <description>为什么写博客 博客是一种写作行为，写作的基本目的是记录和展现自己的想法。博客和普通的写作又有很大的不同。普通的写作可以随心所欲，怎么写，写什么</description>
+    </item>
+    
+  </channel>
+</rss>
