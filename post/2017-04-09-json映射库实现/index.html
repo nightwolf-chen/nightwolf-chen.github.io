@@ -76,7 +76,7 @@
 
 <meta itemprop="datePublished" content="2017-04-09T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-04-09T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="3152">
+<meta itemprop="wordCount" content="3148">
 
 
 
@@ -155,7 +155,7 @@
               <a href="/categories/ios/"> ios </a>
             
           </div>
-        <span class="more-meta"> 约 3152 字 </span>
+        <span class="more-meta"> 约 3148 字 </span>
         <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
@@ -198,9 +198,16 @@
 
 <h2 id="为什么要重复造轮子">为什么要重复造轮子</h2>
 
-<p>我在项目中用过Mantle和JSONModel，用起来感觉都挺好的，但是它们都有一些方面我感觉不是很喜欢。
-&gt;*  Mantle和JSONModel都需要继承自它们的基类来实现相关的能力。这增加了库与业务代码的耦合。比方说，我想在项目里面同时使用不同的Model类型就难以实现了。
-&gt;*  对于自定义类型NSArray，JSONModel需要自定一个和类型同名的protocol来实现类型转换。例如：</p>
+<p>我在项目中用过Mantle和JSONModel，用起来感觉都挺好的，但是它们都有一些方面我感觉不是很喜欢。</p>
+
+<blockquote>
+<ul>
+<li><p>Mantle和JSONModel都需要继承自它们的基类来实现相关的能力。这增加了库与业务代码的耦合。比方说，我想在项目里面同时使用不同的Model类型就难以
+实现了。</p></li>
+
+<li><p>对于自定义类型NSArray，JSONModel需要自定一个和类型同名的protocol来实现类型转换。例如：</p></li>
+</ul>
+</blockquote>
 
 <pre><code class="language-objective-c">@protocol CustomClass&lt;NSObject&gt;
 @end
@@ -216,8 +223,9 @@
 
 <blockquote>
 <ul>
-<li>Mantle自定义类型则需要自己实现对应的ValueTransformer。</li>
-<li>另外在JSONModel的使用当中我还遇到过一个诡异的问题，比如时候你的Model实现了一下自定义的protocol的时候会导致序列化失败，我看了一下代码应该是oc类型解析的是时候出了问题。</li>
+<li><p>Mantle自定义类型则需要自己实现对应的ValueTransformer。</p></li>
+
+<li><p>另外在JSONModel的使用当中我还遇到过一个诡异的问题，比如时候你的Model实现了一下自定义的protocol的时候会导致序列化失败，我看了一下代码应该是oc类型解析的是时候出了问题。</p></li>
 </ul>
 </blockquote>
 
@@ -227,9 +235,13 @@
 <h2 id="基本思路">基本思路</h2>
 
 <p>大部分JSON映射框架都是基于Cocoa强大的runtime能力实现的。我们可以动态的获取类的properties，然后使用强大KVC来实现动态赋值。
-我的思路非常简单直接：
-&gt; 1.获取类所有的Properties，然后解析出每个property的必要信息（类型，keypath等等）。
-&gt; 2.使用JSONSerialization将Data或者String转换成NSDictionary或者NSArray，枚举类的properties通过key来获取NSDictionary里面的value然后赋值到对象里面。</p>
+我的思路非常简单直接：</p>
+
+<blockquote>
+<p>1.获取类所有的Properties，然后解析出每个property的必要信息（类型，keypath等等）。</p>
+
+<p>2.使用JSONSerialization将Data或者String转换成NSDictionary或者NSArray，枚举类的properties通过key来获取NSDictionary里面的value然后赋值到对象里面。</p>
+</blockquote>
 
 <h2 id="获取class的properties">获取Class的properties</h2>
 
