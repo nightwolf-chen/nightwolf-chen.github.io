@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>看待老东家腾讯重组 - Jidong&#39;s Time - A place to think and write.</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Jidong Chen" />
+  <meta name="description" content="鹅厂的架构重组方案 对于互联网圈来说，腾讯架构调整算是最近的一个大新闻。刚听到这个消息的时候，我其实是有点惊讶的，惊讶于庞大的鹅厂 竟然能够如此" />
+
+  <meta name="keywords" content="Jidong, blog, code" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link rel="canonical" href="https://www.jidongchen.com/post/tencent_restructrued_opinions/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="看待老东家腾讯重组" />
+<meta property="og:description" content="鹅厂的架构重组方案 对于互联网圈来说，腾讯架构调整算是最近的一个大新闻。刚听到这个消息的时候，我其实是有点惊讶的，惊讶于庞大的鹅厂 竟然能够如此" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.jidongchen.com/post/tencent_restructrued_opinions/" />
+
+
+
+<meta property="article:published_time" content="2018-10-03T11:12:42&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-10-03T11:12:42&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="看待老东家腾讯重组">
+<meta itemprop="description" content="鹅厂的架构重组方案 对于互联网圈来说，腾讯架构调整算是最近的一个大新闻。刚听到这个消息的时候，我其实是有点惊讶的，惊讶于庞大的鹅厂 竟然能够如此">
+
+
+<meta itemprop="datePublished" content="2018-10-03T11:12:42&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-03T11:12:42&#43;08:00" />
+<meta itemprop="wordCount" content="2903">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="看待老东家腾讯重组"/>
+<meta name="twitter:description" content="鹅厂的架构重组方案 对于互联网圈来说，腾讯架构调整算是最近的一个大新闻。刚听到这个消息的时候，我其实是有点惊讶的，惊讶于庞大的鹅厂 竟然能够如此"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Jidong&#39;s Time</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Jidong&#39;s Time</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">About</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">看待老东家腾讯重组</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-10-03 </span>
+        
+        <span class="more-meta"> 约 2903 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#鹅厂的架构重组方案">鹅厂的架构重组方案</a>
+<ul>
+<li><a href="#重组方案">重组方案</a></li>
+<li><a href="#重组历史">重组历史</a></li>
+<li><a href="#大佬置评">大佬置评</a></li>
+</ul></li>
+<li><a href="#我对重组的理解">我对重组的理解</a>
+<ul>
+<li><a href="#云的扑朔的未来">云的扑朔的未来</a></li>
+<li><a href="#来自头条系的焦虑">来自头条系的焦虑</a></li>
+<li><a href="#企鹅病了">企鹅病了</a></li>
+</ul></li>
+<li><a href="#我在鹅厂的真实经历">我在鹅厂的真实经历</a></li>
+<li><a href="#结语">结语</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h2 id="鹅厂的架构重组方案">鹅厂的架构重组方案</h2>
+
+<p>对于互联网圈来说，腾讯架构调整算是最近的一个大新闻。刚听到这个消息的时候，我其实是有点惊讶的，惊讶于庞大的鹅厂
+竟然能够如此迅速地做出如此大的调整。对于最近大家看空鹅厂的情绪，我想说它肯定是经历过不少挑战。对此我还是为其在
+当下展现出的气魄表现出敬意。</p>
+
+<p>目前鹅厂在一些方面的确存在问题，从此次重组方案中，我们可以窥见其中的一些东西。我们先来看看此次重组的一些细节。</p>
+
+<h3 id="重组方案">重组方案</h3>
+
+<p>腾讯今日宣布公司架构调整，在原有七大事业群（BG）的基础上进行重组整合。</p>
+
+<p>此次调整，腾讯在保留原有的企业发展事业群（CDG）、互动娱乐事业群（IEG）、技术工程事业群（TEG）、微信事业群（WXG）；
+腾讯原有的三个事业群——原社交网络事业群（SNG）、原移动互联网事业群（MIG）、原网络媒体事业群（OMG）被拆分。</p>
+
+<p>其中，腾讯的OMG部门原有的业务一部分进入了平台与内容事业群（PCG），另一部分进入了新的广告营销服务线。
+这次调整中，腾讯的内容资源进一步被统一到PCG体系，广告资源则被统一到到广告营销服务线，领域的划分更加清晰。
+腾讯新成立了云与智慧产业事业群（CSIG）、平台与内容事业群（PCG）。</p>
+
+<p>简单来说，7个事业群归并为6个，保留了原来的4个，新增了CSIG，PCG两个事业群。</p>
+
+<h3 id="重组历史">重组历史</h3>
+
+<p>重组调整并非腾讯史初次，除了这次调整之外，腾讯历史上还有两次比较大的调整。</p>
+
+<blockquote>
+<ul>
+<li><p>2005年升级为BU（Business Unit）事业部制，使腾讯由一家初创公司转向规模化的生态协同，单一的社交产品变成为一站式生活平台；</p></li>
+
+<li><p>2012年升级为BG（Business Group）事业群制，确保了腾讯从PC互联网向移动互联网升级，并通过科技技术 “连接一切”，为亿万用户提供优质服务的同时建立起了开放生态。</p></li>
+</ul>
+</blockquote>
+
+<p>注意这些调整都是鹅厂针对于当下的形势主动做出的调整。我们可以确定的是每一次调整后，鹅厂都能再一次走上快车道迅猛的发展。</p>
+
+<h3 id="大佬置评">大佬置评</h3>
+
+<p>小马哥对于这次调整表示</p>
+
+<blockquote>
+<p>此次主动革新是腾讯迈向下一个20年的新起点。它是一次非常重要的战略升级，互联网的下半场属于产业互联网，上半场腾讯通过连接为用户提供优质的服务，下半场我们将在此基础上，助力产业与消费者形成更具开放性的新型连接生态。</p>
+</blockquote>
+
+<p>总裁刘炽平则表示</p>
+
+<blockquote>
+<p>我们需要时刻保持清醒，充满危机意识和前瞻性，才能引领腾讯进入下一个时代”，腾讯公司总裁刘炽平表示，“连接一切”是腾讯的战略目标，“通过互联网服务提升人类生活品质”是腾讯铭记于心的使命，它们是腾讯不断进化的动力。</p>
+</blockquote>
+
+<h2 id="我对重组的理解">我对重组的理解</h2>
+
+<p>我们从鹅厂的公告看信息量比较大，这次调整必定是经过小马哥和鹅厂领导深思熟虑后的计划。作为曾经在腾讯内部工作过的前员工，我从工程师的角度
+聊聊自己的观点。</p>
+
+<p>公司的组织架构是对主要业务和战略的提现，架构的目的就是为了能够为业务提供足够的支撑和机动性。此次对于老的7个事业群的取舍和新的事业群的设立
+都让我们让我们看见其的主要战略调整。</p>
+
+<p>首先对于解散的SNG，MIG，OMG：</p>
+
+<ul>
+<li><p>SNG作为QQ时代的龙头老大，拥有曾经的王者产品QQ，在社交网络刚刚兴起乃至整一个腾讯创业之初立下了汗马功劳。可以说SNG是曾经鹅肠社交业务的代表，
+被称之为社交网络事业群当之无愧。</p></li>
+
+<li><p>MIG移动互联网事业群，作为进入移动互联网时代的一个重要战略部门，代表产品有QQ浏览器。</p></li>
+
+<li><p>OMG网络媒体事业群，负责腾讯多媒体实业，代表产品是腾讯视频。</p></li>
+</ul>
+
+<p>如今将其解散合并到两个新的事业群：</p>
+
+<ul>
+<li><p>云与智慧产业事业群（CSIG）：整合腾讯云、互联网+、智慧零售、教育、医疗、安全和LBS等行业解决方案，推动产业的数字化升级。</p></li>
+
+<li><p>平台与内容事业群（PCG）：将对原社交网络事业群（SNG）、原移动互联网事业群（MIG）、原网络媒体事业群（OMG）中，与社交平台、流量平台、数字内容、核心技术等高度关联且具有高融合性的板块，进行有机地拆分和重组。</p></li>
+</ul>
+
+<p>我们可以简单地进行理解，被解散的部门不再是公司层面战略之重，取而代之的是新成立的事业部。其实，对于新成立的事业群，
+非常容易联想到分表对标阿里云和字节跳动（头条系）。我想鹅肠已经明确地在这个领域展开了顽强的捍卫战。</p>
+
+<h3 id="云的扑朔的未来">云的扑朔的未来</h3>
+
+<p>云与智慧产业事业群（CSIG）对标阿里云，腾讯云在对标阿里云的时候节节败退已经是公开的秘密。我想此次高层的调整计划也已经说明了部分问题。
+对于坐拥资金和流量的腾讯为何在云这方面一直做不好，一直是困惑我的问题。我自己曾经在开发自己业余App的时候支持过东家腾讯云的服务，
+我只能说，真的让我感觉不太好。我自己和同事也在反思为什么在如此重视用户体验的鹅肠，腾讯云的用户控制台这么难用。</p>
+
+<p>撇去前段时间发生的腾讯云数据丢失事件不说。我跟朋友曾经聊起这个问题。有人说云端一个2B的业务。鹅肠的基因是2C的，而阿里恰恰强于2B。这或许可以解释
+鹅肠在这方面的薄弱之处。然而，站在我个人以工程师的角度看，我觉得是对于技术投入的不重视。</p>
+
+<p>我们都知道云本身是一种技术产品，高性能高可用的服务是业务之本，用户体验是锦上添花的事情。而鹅长是非常善于打磨用户体验的公司，基本上，鹅厂愿意用
+可以接受的一切成本去优化用户体验。不在乎你用技术去实现，不管你怎么去实现，始终都是实用主义，够用就行了。在鹅肠没有人会为牛逼的技术喝彩，没有会为
+一个没有业务产出的技术买单。这让我想起早些年被解散的腾讯研究院。的确没有收入的技术价值不大，重视用户体验是无可厚非的。但是在这种情况下，没有工程师能够有足够的空间去做技术投资，当前没有价值的技术或许能够在未来大放异彩，当前够用的技术却在更加复杂的领域无计可施。</p>
+
+<p>所以当云的时代到来的时候，鹅厂真的准备好了吗？</p>
+
+<p>以上可能只是我站在工程师的角度发的一点牢骚。不过，说鹅厂现在奋起直追为时不晚。</p>
+
+<h3 id="来自头条系的焦虑">来自头条系的焦虑</h3>
+
+<p>今年以来，头条系列的异军突起已经打得鹅厂措手不及。今日头条不仅打败了腾讯系的腾讯新闻，天天快报，甚至开始威胁到微信公众号和朋友圈的使用时间。
+现象级产品抖音更是暴露了鹅厂在产品持续投入方面的问题，现在有多少人戒掉了朋友圈开始刷抖音。坐拥主要流量入口的腾讯在信息流，短视频全线崩塌，这不禁让人大跌眼镜。我只能说，鹅厂曾经拥有那么好的资源和优势,为何没有好好把握住呢。我想这也是鹅厂高层最近在一直反思的问题。</p>
+
+<h3 id="企鹅病了">企鹅病了</h3>
+
+<p>从腾讯没有梦想开始，这大半年已经看了很多看空，甚至喷鹅厂的帖子。所谓爱之切恨之深。我想那些发文批评鹅厂的人
+都是非常在意鹅厂的未来，所以才会希望它能够意识到问题去改进。鹅厂的子民们都在想，鹅厂到底怎么了？我想没有人
+能够说出所有的原因，但是至少目前鹅厂影意识到问题并且勇敢地去尝试改变。</p>
+
+<h2 id="我在鹅厂的真实经历">我在鹅厂的真实经历</h2>
+
+<p>我自己而言对于鹅厂始终是心怀感激的。鹅厂对于员工是非常尊重友好的，工资福利都是国内顶尖水平。在鹅肠工作确实比较舒心惬意。
+公司内部非常的包容和开放，高层大佬能够听取大家的意见。我觉得这些文化，也是鹅厂能够走到今天的一个主要原因。</p>
+
+<h2 id="结语">结语</h2>
+
+<p>腾讯的愿景是成为最受尊重的互联网企业，我们的生活也的确在企鹅的努力下有了质的改变。我们可以看出企鹅是朝着它的愿景努力的。今天我们的生活已经离不开
+企鹅，企鹅的发展关乎我们每一个人。鹅厂在发展的过程中从未缺乏过挑战，希望企鹅能致力于改善我们每一个人的生活，能够在自我蜕变和进化后变的更好，真正成为最受尊敬的互联网企业。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Jidong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-10-03</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content">@Jidong Chen 2018</span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/wechat-qr-code.png">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/alipay-qr-code.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/comming-back-to-github/">
+            <span class="next-text nav-default">重回Github</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
+    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2018-10-03 11:12:42 \x2b0800 CST',
+    title: '看待老东家腾讯重组',
+    clientID: '96701fa39ca1c2e4d818',
+    clientSecret: '2f0e4065509c7535190f0f5b8bffa79c602901e5',
+    repo: 'nightwolf-chen.github.io',
+    owner: 'nightwolf-chen',
+    admin: ['nightwolf-chen'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:jidongchen93@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/6760442/bruce-chen" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://github.com/nightwolf-chen" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.jidongchen.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Jidong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-54003335-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
