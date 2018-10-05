@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Jidong Chen</copyright>
-    <lastBuildDate>Wed, 03 Oct 2018 11:12:42 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 05 Oct 2018 10:30:57 +0800</lastBuildDate>
     
 	<atom:link href="https://www.jidongchen.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>如何从零开始开发iOS App到上架赚钱-附完整源码</title>
+      <link>https://www.jidongchen.com/post/app_lesson_1/</link>
+      <pubDate>Fri, 05 Oct 2018 10:30:57 +0800</pubDate>
+      
+      <guid>https://www.jidongchen.com/post/app_lesson_1/</guid>
+      <description>前言 有不少人问我怎么业余学习写代码开发一些东西玩玩。我虽然是职业开发工程师，业余开发App也仅仅只是自己的兴趣而已。我想不是所有的职业开发者</description>
+    </item>
     
     <item>
       <title>看待老东家腾讯重组</title>
