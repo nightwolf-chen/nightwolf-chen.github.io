@@ -26,7 +26,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.37.1" />
+<meta name="generator" content="Hugo 0.49" />
 
 
 <link rel="canonical" href="https://www.jidongchen.com/post/2017-03-04-ios-the-responder-chain/" />
@@ -52,23 +52,8 @@
 <meta property="og:title" content="iOS The Responder Chain" />
 <meta property="og:description" content="iOS App的事件分发和响应机制是基于Responder Chain模式的。今天我详细的讨论一下iOS里面的Responder Chain。 事件的传" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.jidongchen.com/post/2017-03-04-ios-the-responder-chain/" />
-
-
-
-<meta property="article:published_time" content="2017-03-04T00:00:00&#43;00:00"/>
-
+<meta property="og:url" content="https://www.jidongchen.com/post/2017-03-04-ios-the-responder-chain/" /><meta property="article:published_time" content="2017-03-04T00:00:00&#43;00:00"/>
 <meta property="article:modified_time" content="2017-03-04T00:00:00&#43;00:00"/>
-
-
-
-
-
-
-
-
-
-
 
 <meta itemprop="name" content="iOS The Responder Chain">
 <meta itemprop="description" content="iOS App的事件分发和响应机制是基于Responder Chain模式的。今天我详细的讨论一下iOS里面的Responder Chain。 事件的传">
@@ -76,7 +61,7 @@
 
 <meta itemprop="datePublished" content="2017-03-04T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-03-04T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="891">
+<meta itemprop="wordCount" content="892">
 
 
 
@@ -155,7 +140,7 @@
               <a href="/categories/ios/"> ios </a>
             
           </div>
-        <span class="more-meta"> 约 891 字 </span>
+        <span class="more-meta"> 约 892 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -319,7 +304,9 @@
 
   <span class="copyright-year">
     &copy; 
-    2018
+    
+      2018 - 
+    2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -349,12 +336,16 @@
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-54003335-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-54003335-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 
