@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Xcode on Jidong&#39;s Time - A place to think and write.</title>
+    <title>xcode on Jidong&#39;s Time - A place to think and write.</title>
     <link>https://www.jidongchen.com/categories/xcode/</link>
-    <description>Recent content in Xcode on Jidong&#39;s Time - A place to think and write.</description>
+    <description>Recent content in xcode on Jidong&#39;s Time - A place to think and write.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Jidong Chen</copyright>

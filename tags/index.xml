@@ -7,13 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Jidong Chen</copyright>
-    <lastBuildDate>Sun, 30 Sep 2018 16:12:51 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 13 Nov 2019 20:22:18 +0000</lastBuildDate>
     
 	<atom:link href="https://www.jidongchen.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Blog</title>
+      <title>Facebook</title>
+      <link>https://www.jidongchen.com/tags/facebook/</link>
+      <pubDate>Wed, 13 Nov 2019 20:22:18 +0000</pubDate>
+      
+      <guid>https://www.jidongchen.com/tags/facebook/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blog</title>
       <link>https://www.jidongchen.com/tags/blog/</link>
       <pubDate>Sun, 30 Sep 2018 16:12:51 +0800</pubDate>
       
@@ -22,7 +31,25 @@
     </item>
     
     <item>
-      <title>Farbox</title>
+      <title>career</title>
+      <link>https://www.jidongchen.com/tags/career/</link>
+      <pubDate>Wed, 13 Nov 2019 20:22:18 +0000</pubDate>
+      
+      <guid>https://www.jidongchen.com/tags/career/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>comments</title>
+      <link>https://www.jidongchen.com/tags/comments/</link>
+      <pubDate>Wed, 03 Oct 2018 11:12:42 +0800</pubDate>
+      
+      <guid>https://www.jidongchen.com/tags/comments/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>farbox</title>
       <link>https://www.jidongchen.com/tags/farbox/</link>
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
@@ -31,7 +58,7 @@
     </item>
     
     <item>
-      <title>Hacker</title>
+      <title>hacker</title>
       <link>https://www.jidongchen.com/tags/hacker/</link>
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
@@ -40,11 +67,20 @@
     </item>
     
     <item>
-      <title>Jekll</title>
+      <title>jekll</title>
       <link>https://www.jidongchen.com/tags/jekll/</link>
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>https://www.jidongchen.com/tags/jekll/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tencent</title>
+      <link>https://www.jidongchen.com/tags/tencent/</link>
+      <pubDate>Wed, 03 Oct 2018 11:12:42 +0800</pubDate>
+      
+      <guid>https://www.jidongchen.com/tags/tencent/</guid>
       <description></description>
     </item>
     

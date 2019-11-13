@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tencent on Jidong&#39;s Time - A place to think and write.</title>
+    <link>https://www.jidongchen.com/tags/tencent/</link>
+    <description>Recent content in tencent on Jidong&#39;s Time - A place to think and write.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>Jidong Chen</copyright>
+    <lastBuildDate>Wed, 03 Oct 2018 11:12:42 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.jidongchen.com/tags/tencent/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>老东家腾讯重组</title>
+      <link>https://www.jidongchen.com/post/tencent_restructrued_opinions/</link>
+      <pubDate>Wed, 03 Oct 2018 11:12:42 +0800</pubDate>
+      
+      <guid>https://www.jidongchen.com/post/tencent_restructrued_opinions/</guid>
+      <description>鹅厂的架构重组方案 对于互联网圈来说，腾讯架构调整算是最近的一个大新闻。刚听到这个消息的时候，我其实是有点惊讶的，惊讶于庞大的鹅厂 竟然能够如此</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -26,7 +26,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.37.1" />
+<meta name="generator" content="Hugo 0.54.0" />
 
 
 <link rel="canonical" href="https://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/" />
@@ -53,22 +53,8 @@
 <meta property="og:description" content="依赖管理是每一个项目都会遇到的问题，在多模块协作的时候尤其重要。 依赖管理方案 管理方式 石器时代:直接将代码加入target一起编译，这样做的唯" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.jidongchen.com/post/2017-04-17-xcode%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%8E%A2%E8%AE%A8/" />
-
-
-
 <meta property="article:published_time" content="2017-04-17T00:00:00&#43;00:00"/>
-
 <meta property="article:modified_time" content="2017-04-17T00:00:00&#43;00:00"/>
-
-
-
-
-
-
-
-
-
-
 
 <meta itemprop="name" content="Xcode依赖管理讨论与实践">
 <meta itemprop="description" content="依赖管理是每一个项目都会遇到的问题，在多模块协作的时候尤其重要。 依赖管理方案 管理方式 石器时代:直接将代码加入target一起编译，这样做的唯">
@@ -76,7 +62,7 @@
 
 <meta itemprop="datePublished" content="2017-04-17T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-04-17T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1911">
+<meta itemprop="wordCount" content="1921">
 
 
 
@@ -157,7 +143,7 @@
               <a href="/categories/xcode/"> xcode </a>
             
           </div>
-        <span class="more-meta"> 约 1911 字 </span>
+        <span class="more-meta"> 约 1921 字 </span>
         <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -203,7 +189,8 @@
     <div class="post-content">
       
 
-<p>依赖管理是每一个项目都会遇到的问题，在多模块协作的时候尤其重要。</p>
+<pre><code>依赖管理是每一个项目都会遇到的问题，在多模块协作的时候尤其重要。
+</code></pre>
 
 <h2 id="依赖管理方案">依赖管理方案</h2>
 
@@ -451,7 +438,9 @@ end
 
   <span class="copyright-year">
     &copy; 
-    2018
+    
+      2018 - 
+    2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
@@ -481,12 +470,16 @@ end
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-54003335-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-54003335-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 

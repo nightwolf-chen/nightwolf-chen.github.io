@@ -7,22 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Jidong Chen</copyright>
-    <lastBuildDate>Fri, 05 Oct 2018 10:30:57 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 13 Nov 2019 20:22:18 +0000</lastBuildDate>
     
 	<atom:link href="https://www.jidongchen.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>如何从零开始开发iOS App到上架赚钱-附完整源码</title>
-      <link>https://www.jidongchen.com/post/app_lesson_1/</link>
-      <pubDate>Fri, 05 Oct 2018 10:30:57 +0800</pubDate>
+      <title>踏入Facebook</title>
+      <link>https://www.jidongchen.com/post/career/start-facebook-career/</link>
+      <pubDate>Wed, 13 Nov 2019 20:22:18 +0000</pubDate>
       
-      <guid>https://www.jidongchen.com/post/app_lesson_1/</guid>
-      <description>前言 有不少人问我怎么业余学习写代码开发一些东西玩玩。我虽然是职业开发工程师，业余开发App也仅仅只是自己的兴趣而已。我想不是所有的职业开发者</description>
+      <guid>https://www.jidongchen.com/post/career/start-facebook-career/</guid>
+      <description>背景 2018年底，Facebook的HR又发邮件问我有没有兴趣去面试。他捞到我上一次面试的记录，表示其实就差一点，可以再试试。当时我已经已经</description>
     </item>
     
     <item>
-      <title>看待老东家腾讯重组</title>
+      <title>老东家腾讯重组</title>
       <link>https://www.jidongchen.com/post/tencent_restructrued_opinions/</link>
       <pubDate>Wed, 03 Oct 2018 11:12:42 +0800</pubDate>
       
@@ -36,7 +36,7 @@
       <pubDate>Mon, 01 Oct 2018 11:26:52 +0800</pubDate>
       
       <guid>https://www.jidongchen.com/about/</guid>
-      <description>关于我 我的职业是软件工程师专注于Mobile开发，目前就职于阿里巴巴集团西溪园区。 这个博客是我沉淀和分享自己想法的地方。除了技术之外我兴趣广</description>
+      <description>关于我 兴趣广泛的软件工程师，遵循&amp;ldquo;Keep it simple, make it work.&amp;rdquo;的哲学。Flutter混合项目早期实践者，flutte</description>
     </item>
     
     <item>
@@ -46,15 +46,6 @@
       
       <guid>https://www.jidongchen.com/post/comming-back-to-github/</guid>
       <description>Farbox Bitcron账号欠费被停 最近在翻自己github上面的一些东西时候看到自己博客的连接点开一看，竟然打不开了。之前一直使用Farbox以及</description>
-    </item>
-    
-    <item>
-      <title>成为好男友的15个建议</title>
-      <link>https://www.jidongchen.com/post/2017-12-16-%E6%88%90%E4%B8%BA%E5%A5%BD%E7%94%B7%E5%8F%8B%E7%9A%8415%E4%B8%AA%E5%BB%BA%E8%AE%AE/</link>
-      <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.jidongchen.com/post/2017-12-16-%E6%88%90%E4%B8%BA%E5%A5%BD%E7%94%B7%E5%8F%8B%E7%9A%8415%E4%B8%AA%E5%BB%BA%E8%AE%AE/</guid>
-      <description>成为好男友的15个建议 各位技术哥哥还在未如何让女友开心烦恼吗？这里给出一些建议，希望对你们有所帮助。 就像你希望女友总是支持你一样，她也需要你</description>
     </item>
     
     <item>
